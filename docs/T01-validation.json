@@ -1,0 +1,123 @@
+{
+  "metrics": [
+    {
+      "width": 1366,
+      "height": 768,
+      "overflow": 0,
+      "evidenceBottom": 745.3125,
+      "headingCount": 1
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "evidenceBottom": 972.25,
+      "headingCount": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "evidenceBottom": 1705.375,
+      "headingCount": 1
+    }
+  ],
+  "interaction": [
+    {
+      "story": 1,
+      "click": true,
+      "enter": true,
+      "space": true
+    },
+    {
+      "story": 2,
+      "click": true,
+      "enter": true,
+      "space": true
+    },
+    {
+      "story": 3,
+      "click": true,
+      "enter": true,
+      "space": true
+    }
+  ],
+  "tabOrder": [
+    {
+      "tag": "A",
+      "text": "본문으로 바로가기",
+      "outline": "solid"
+    },
+    {
+      "tag": "A",
+      "text": "JOOHOE.",
+      "outline": "solid"
+    },
+    {
+      "tag": "A",
+      "text": "경험",
+      "outline": "solid"
+    },
+    {
+      "tag": "A",
+      "text": "관심과 방향",
+      "outline": "solid"
+    },
+    {
+      "tag": "A",
+      "text": "GitHub ↗",
+      "outline": "solid"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "과정 읽기 ＋",
+      "outline": "solid"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "과정 읽기 ＋",
+      "outline": "solid"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "과정 읽기 ＋",
+      "outline": "solid"
+    },
+    {
+      "tag": "A",
+      "text": "공개 근거 BookVerse · 역할과 결과 기록읽어 보기 ↗",
+      "outline": "solid"
+    },
+    {
+      "tag": "A",
+      "text": "공개 기록 원문 ↗",
+      "outline": "solid"
+    },
+    {
+      "tag": "SUMMARY",
+      "text": "공개 범위 보기",
+      "outline": "solid"
+    },
+    {
+      "tag": "A",
+      "text": "처음으로 ↑",
+      "outline": "solid"
+    }
+  ],
+  "internalAnchors": true,
+  "externalLinks": [
+    {
+      "url": "https://github.com/rnjswnghl/introme",
+      "status": 200
+    },
+    {
+      "url": "https://raw.githubusercontent.com/rnjswnghl/introme/497872fe36f020c575bd907220c35c381bc51799/docs/BookVerse.md",
+      "status": 200
+    }
+  ],
+  "reducedMotion": true,
+  "textZoomOverflow": 0,
+  "contrastMinimum": 3.851998718585435,
+  "contrastFailures": [],
+  "consoleErrors": []
+}
