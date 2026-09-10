@@ -1,0 +1,24 @@
+{
+  "url": "https://joohoe-introme.rnjswnghl.chatgpt.site/",
+  "status": 200,
+  "title": "권주회 | 시작하면 쉽게 놓지 않는 사람",
+  "loggedOutContext": true,
+  "intro": "시작하면쉽게 놓지 않는 사람.",
+  "interaction": true,
+  "assets": [
+    {
+      "path": "styles.css",
+      "status": 200
+    },
+    {
+      "path": "app.js",
+      "status": 200
+    }
+  ],
+  "source": {
+    "status": 200,
+    "url": "https://github.com/rnjswnghl/introme/commit/9401440df1c97e20788a43223f91b87944dde26b",
+    "title": "docs(t01): 결함 수정과 검증 화면 및 제출 방법 기록 · rnjswnghl/introme@9401440 · GitHub"
+  },
+  "consoleErrors": []
+}
