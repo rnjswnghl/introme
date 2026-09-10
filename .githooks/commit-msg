@@ -1,6 +1,6 @@
 #!/bin/sh
-subject=$(head -n 1 "$1")
-if ! printf '%s\n' "$subject" | grep -Eq '^(feat|fix|docs|style|refactor|test|chore)\([a-z0-9-]+\): .+'; then
-  echo 'Commit format: type(scope): summary' >&2
-  exit 1
-fi
+IFS= read -r subject < "$1"
+case "$subject" in
+  feat\(*\):\ ?*|fix\(*\):\ ?*|docs\(*\):\ ?*|style\(*\):\ ?*|refactor\(*\):\ ?*|test\(*\):\ ?*|chore\(*\):\ ?*) exit 0 ;;
+  *) printf '%s\n' 'Commit format: type(scope): summary' >&2; exit 1 ;;
+esac
