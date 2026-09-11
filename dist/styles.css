@@ -22,3 +22,7 @@
 @keyframes small-drift{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(3px) rotate(7deg)}}
 @media(min-width:1600px){.polaroid-small{width:215px;top:168px;right:26px}.polaroid-small img{height:140px}.scene-stamp{bottom:36px}}
 @media(max-width:700px){.polaroid-small{width:154px;top:140px;right:8px}.polaroid-small img{height:94px}.polaroid-small figcaption{font-size:.6875rem}.scene-stamp{right:0;bottom:39px}}
+/* Laptop: retain all three assignment essentials above the fold. */
+@media(min-width:1001px) and (max-width:1599px){.header{height:76px}.hero{padding:25px 0 0}}
+.vertical-note{height:112px;top:0;font-size:.75rem;letter-spacing:.06em}
+@media(max-width:700px){.vertical-note{font-size:.6875rem;height:110px}}
