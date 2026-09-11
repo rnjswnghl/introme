@@ -22,3 +22,7 @@
 - [배포한 소스 전체 커밋](https://github.com/rnjswnghl/introme/commit/9401440df1c97e20788a43223f91b87944dde26b)
 - [제출 준비와 확인 방법](docs/T01-submission.md)
 - [공개 환경 검증](docs/T01-public-validation.json)
+
+## 디자인 작업 기준
+[design.md](design.md)를 먼저 읽고 폰트·색상·레이아웃과 레퍼런스 선택을 결정합니다. [AGENTS.md](AGENTS.md)에 다음 작업에서도 해당 문서를 읽도록 연결했습니다.
+선택한 디자인 분석과 라이선스는 docs/design-references/에 보관합니다. 2026-09-11 기준 파일·스킬 기반 작업 방식을 설정했으며, 공개 v1 화면의 폰트 교체나 재배포를 뜻하지 않습니다.
