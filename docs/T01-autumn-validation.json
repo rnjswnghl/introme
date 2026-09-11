@@ -1,0 +1,267 @@
+{
+  "date": "2026-09-11",
+  "metrics": [
+    {
+      "width": 1366,
+      "height": 768,
+      "overflow": 0,
+      "evidenceBottom": 756.890625,
+      "h1Count": 1,
+      "fonts": [
+        {
+          "family": "Nanum Myeongjo",
+          "status": "loaded"
+        },
+        {
+          "family": "Pretendard",
+          "status": "loaded"
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/autumn-courtyard.png",
+          "loaded": true
+        },
+        {
+          "src": "assets/autumn-desk.png",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "evidenceBottom": 992.09375,
+      "h1Count": 1,
+      "fonts": [
+        {
+          "family": "Nanum Myeongjo",
+          "status": "loaded"
+        },
+        {
+          "family": "Pretendard",
+          "status": "loaded"
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/autumn-courtyard.png",
+          "loaded": true
+        },
+        {
+          "src": "assets/autumn-desk.png",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "evidenceBottom": 1619.953125,
+      "h1Count": 1,
+      "fonts": [
+        {
+          "family": "Nanum Myeongjo",
+          "status": "loaded"
+        },
+        {
+          "family": "Pretendard",
+          "status": "loaded"
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/autumn-courtyard.png",
+          "loaded": true
+        },
+        {
+          "src": "assets/autumn-desk.png",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "height": 700,
+      "overflow": 0,
+      "evidenceBottom": 1603.953125,
+      "h1Count": 1,
+      "fonts": [
+        {
+          "family": "Nanum Myeongjo",
+          "status": "loaded"
+        },
+        {
+          "family": "Pretendard",
+          "status": "loaded"
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/autumn-courtyard.png",
+          "loaded": true
+        },
+        {
+          "src": "assets/autumn-desk.png",
+          "loaded": true
+        }
+      ]
+    }
+  ],
+  "headings": [
+    {
+      "level": 1,
+      "text": "시작하면,쉽게 놓지 않는 사람."
+    },
+    {
+      "level": 2,
+      "text": "말보다, 해 본 일로."
+    },
+    {
+      "level": 3,
+      "text": "시작할 수 있는 기반을 만들다"
+    },
+    {
+      "level": 3,
+      "text": "데이터를 찾는 경험으로 잇다"
+    },
+    {
+      "level": 3,
+      "text": "오류 앞에서도, 한 번 더"
+    },
+    {
+      "level": 2,
+      "text": "서로 다른 관심이,하나의 방향이 되도록."
+    },
+    {
+      "level": 2,
+      "text": "BookVerse, 그리고 배운 것."
+    },
+    {
+      "level": 3,
+      "text": "내가 맡은 일"
+    },
+    {
+      "level": 3,
+      "text": "남은 결과와 다음 질문"
+    }
+  ],
+  "tabOrder": [
+    {
+      "tag": "A",
+      "text": "본문으로 바로가기",
+      "outline": "solid"
+    },
+    {
+      "tag": "A",
+      "text": "주회권주회의 기록JOOHOE KWON",
+      "outline": "solid"
+    },
+    {
+      "tag": "A",
+      "text": "경험의 갈피",
+      "outline": "solid"
+    },
+    {
+      "tag": "A",
+      "text": "좋아하는 것들",
+      "outline": "solid"
+    },
+    {
+      "tag": "A",
+      "text": "GitHub ↗",
+      "outline": "solid"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "움직임 멈추기",
+      "outline": "solid"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "과정 읽기 ＋",
+      "outline": "solid"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "과정 읽기 ＋",
+      "outline": "solid"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "과정 읽기 ＋",
+      "outline": "solid"
+    },
+    {
+      "tag": "A",
+      "text": "공개 근거 BookVerse · 역할과 결과 기록읽어 보기 ↗",
+      "outline": "solid"
+    },
+    {
+      "tag": "A",
+      "text": "공개 기록 원문 ↗",
+      "outline": "solid"
+    },
+    {
+      "tag": "SUMMARY",
+      "text": "공개 범위 보기",
+      "outline": "solid"
+    },
+    {
+      "tag": "A",
+      "text": "처음으로 ↑",
+      "outline": "solid"
+    }
+  ],
+  "interactions": [
+    {
+      "story": 1,
+      "click": true,
+      "enter": true,
+      "space": true
+    },
+    {
+      "story": 2,
+      "click": true,
+      "enter": true,
+      "space": true
+    },
+    {
+      "story": 3,
+      "click": true,
+      "enter": true,
+      "space": true
+    }
+  ],
+  "motion": {
+    "click": true,
+    "enter": true,
+    "space": true,
+    "osReduce": true,
+    "osChanges": true,
+    "pausedReaderPreferenceRetained": true
+  },
+  "withoutJavaScript": {
+    "readableDetails": true,
+    "stationaryImages": true
+  },
+  "externalLinks": [
+    {
+      "url": "https://github.com/rnjswnghl/introme",
+      "status": 200
+    },
+    {
+      "url": "https://raw.githubusercontent.com/rnjswnghl/introme/497872fe36f020c575bd907220c35c381bc51799/docs/BookVerse.md",
+      "status": 200
+    }
+  ],
+  "internalAnchors": true,
+  "contrastMinimum": 4.6508316744775495,
+  "contrastFailures": [],
+  "consoleErrors": [],
+  "failedRequests": [],
+  "textZoomOverflow": 0,
+  "textZoomNote": "Root font size 200% is a text stress check, not certification of browser zoom."
+}
