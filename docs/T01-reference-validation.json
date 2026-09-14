@@ -1,0 +1,158 @@
+{
+  "viewports": [
+    {
+      "width": 1366,
+      "height": 768,
+      "name": "1366",
+      "overflow": 0,
+      "tabs": [
+        {
+          "text": "00소개",
+          "href": "#main"
+        },
+        {
+          "text": "01경험",
+          "href": "#stories"
+        },
+        {
+          "text": "02관심",
+          "href": "#about"
+        },
+        {
+          "text": "03기록",
+          "href": "#evidence"
+        }
+      ],
+      "fonts": [
+        {
+          "family": "Nanum Myeongjo",
+          "status": "loaded"
+        },
+        {
+          "family": "Pretendard",
+          "status": "loaded"
+        }
+      ],
+      "imagesLoaded": true,
+      "h1Count": 1,
+      "anchorsValid": true,
+      "tabFocusOutline": true
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "name": "1920",
+      "overflow": 0,
+      "tabs": [
+        {
+          "text": "00소개",
+          "href": "#main"
+        },
+        {
+          "text": "01경험",
+          "href": "#stories"
+        },
+        {
+          "text": "02관심",
+          "href": "#about"
+        },
+        {
+          "text": "03기록",
+          "href": "#evidence"
+        }
+      ],
+      "fonts": [
+        {
+          "family": "Nanum Myeongjo",
+          "status": "loaded"
+        },
+        {
+          "family": "Pretendard",
+          "status": "loaded"
+        }
+      ],
+      "imagesLoaded": true,
+      "h1Count": 1,
+      "anchorsValid": true,
+      "tabFocusOutline": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "390",
+      "overflow": 0,
+      "tabs": [
+        {
+          "text": "00소개",
+          "href": "#main"
+        },
+        {
+          "text": "01경험",
+          "href": "#stories"
+        },
+        {
+          "text": "02관심",
+          "href": "#about"
+        },
+        {
+          "text": "03기록",
+          "href": "#evidence"
+        }
+      ],
+      "fonts": [
+        {
+          "family": "Nanum Myeongjo",
+          "status": "loaded"
+        },
+        {
+          "family": "Pretendard",
+          "status": "loaded"
+        }
+      ],
+      "imagesLoaded": true,
+      "h1Count": 1,
+      "anchorsValid": true,
+      "tabFocusOutline": true
+    },
+    {
+      "width": 320,
+      "height": 700,
+      "name": "320",
+      "overflow": 0,
+      "tabs": [
+        {
+          "text": "00소개",
+          "href": "#main"
+        },
+        {
+          "text": "01경험",
+          "href": "#stories"
+        },
+        {
+          "text": "02관심",
+          "href": "#about"
+        },
+        {
+          "text": "03기록",
+          "href": "#evidence"
+        }
+      ],
+      "fonts": [
+        {
+          "family": "Nanum Myeongjo",
+          "status": "loaded"
+        },
+        {
+          "family": "Pretendard",
+          "status": "loaded"
+        }
+      ],
+      "imagesLoaded": true,
+      "h1Count": 1,
+      "anchorsValid": true,
+      "tabFocusOutline": true
+    }
+  ],
+  "consoleErrors": [],
+  "failedRequests": []
+}
