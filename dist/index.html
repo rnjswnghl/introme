@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="권주회의 프론트엔드·백엔드·AI 프로젝트와 실제 Git 커밋을 바탕으로 정리한 포트폴리오입니다.">
+  <meta name="description" content="권주회의 프론트엔드 개발 경험과 주요 프로젝트를 소개하는 포트폴리오입니다.">
   <meta name="theme-color" content="#f3eee3">
   <title>권주회 | 프로젝트 기록</title>
   <link rel="icon" href="data:,">
@@ -15,119 +15,115 @@
 <a class="skip" href="#portfolio">포트폴리오로 바로가기</a>
 <div class="shell">
   <header class="header">
-    <a class="wordmark" href="#intro" aria-label="권주회 포트폴리오 소개"><span class="seal" aria-hidden="true">주회</span><span>권주회의 기록<span class="wordmark-en">JOOHOE KWON</span></span></a>
-    <nav aria-label="주요 메뉴"><a href="#projects">프로젝트</a><a href="#about">관심과 방향</a><a href="https://github.com/rnjswnghl">GitHub <span aria-hidden="true">↗</span></a></nav>
+    <a class="wordmark" href="#intro" aria-label="권주회 포트폴리오 소개"><span class="seal" aria-hidden="true">주회</span><span>권주회 포트폴리오<span class="wordmark-en">JOOHOE KWON</span></span></a>
+    <nav aria-label="주요 메뉴"><a href="#projects">프로젝트</a><a href="#about">소개</a><a href="https://github.com/rnjswnghl">GitHub <span aria-hidden="true">↗</span></a></nav>
   </header>
 
   <main id="portfolio" class="portfolio-stage" tabindex="-1">
     <div class="folio-heading">
-      <div><span>PORTFOLIO</span><span>VOL. 02</span><span>2026</span></div>
-      <p>확인 가능한 기록만, 차분하게 모았습니다.</p>
+      <div><span>PORTFOLIO</span><span>KWON JOOHOE</span></div>
+      <p>Frontend Developer</p>
     </div>
 
     <div class="folder-tabs" role="tablist" aria-label="포트폴리오 차례">
-      <button id="tab-intro" class="folder-tab" type="button" role="tab" aria-selected="true" aria-controls="panel-intro" data-route="intro"><span>00</span>소개</button>
+      <button id="tab-intro" class="folder-tab" type="button" role="tab" aria-selected="true" aria-controls="panel-intro" data-route="intro"><span>00</span>홈</button>
       <button id="tab-projects" class="folder-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-projects" data-route="projects" tabindex="-1"><span>01</span>프로젝트</button>
-      <button id="tab-about" class="folder-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-about" data-route="about" tabindex="-1"><span>02</span>관심</button>
-      <button id="tab-records" class="folder-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-records" data-route="records" tabindex="-1"><span>03</span>기록</button>
+      <button id="tab-about" class="folder-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-about" data-route="about" tabindex="-1"><span>02</span>소개</button>
+      <button id="tab-records" class="folder-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-records" data-route="records" tabindex="-1"><span>03</span>링크</button>
     </div>
 
     <div class="archive-sheet">
       <section id="panel-intro" class="tab-panel intro-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-intro">
         <div class="hero-copy">
-          <p class="eyebrow"><span aria-hidden="true"></span> 가을, 나를 펼쳐 보는 시간</p>
-          <h1>시작하면,<br>쉽게 <em>놓지 않는</em> 사람.</h1>
-          <p class="intro">낯선 영역을 배워 기능으로 연결하고, 오류가 남으면 다시 커밋합니다. 프론트엔드에서 시작해 백엔드와 AI까지 프로젝트 안에서 필요한 일을 맡아 왔습니다.</p>
+          <p class="eyebrow"><span aria-hidden="true"></span> FRONTEND DEVELOPER PORTFOLIO</p>
+          <h1>사용자의 흐름을<br><em>끝까지 다듬는</em> 개발자.</h1>
+          <p class="intro">권주회입니다. React와 Vue로 웹 화면을 만들며 검색·필터·상태 관리·API 연동을 구현해 왔습니다. 프로젝트에 필요한 경우 Django와 FastAPI까지 개발 범위를 넓혔습니다.</p>
           <dl class="profile-notes">
             <div><dt>이름</dt><dd>권주회</dd></div>
             <div><dt>전공</dt><dd>러시아학 × 빅데이터학</dd></div>
-            <div><dt>관심</dt><dd>프론트엔드 · 사용자 화면</dd></div>
+            <div><dt>분야</dt><dd>프론트엔드 개발</dd></div>
           </dl>
-          <button class="text-action" type="button" data-open-tab="projects">프로젝트 기록 펼치기 <span aria-hidden="true">→</span></button>
+          <button class="text-action" type="button" data-open-tab="projects">프로젝트 보기 <span aria-hidden="true">→</span></button>
         </div>
-        <aside class="season-scene" aria-label="가을의 분위기를 담은 이미지">
+        <aside class="season-scene" aria-label="전통적인 분위기의 이미지">
           <p class="vertical-note" aria-hidden="true">천천히,<br>그러나 끝까지.</p>
           <figure class="polaroid polaroid-main">
             <img src="assets/autumn-courtyard.png" width="1536" height="1024" alt="붉은 단풍 아래 고요한 한옥 마당을 그린 AI 계절 이미지" fetchpriority="high">
-            <figcaption>머무는 계절.<span>autumn notes / 01</span></figcaption>
+            <figcaption>차분하게 살피고,<span>끝까지 완성합니다.</span></figcaption>
           </figure>
           <figure class="polaroid polaroid-small">
             <img src="assets/autumn-desk.png" width="1536" height="1024" alt="한옥 창가의 책과 찻잔, 은행잎을 그린 AI 계절 이미지">
-            <figcaption>작은 호기심 한 장.</figcaption>
+            <figcaption>배운 것을 코드로 옮깁니다.</figcaption>
           </figure>
           <span class="scene-stamp" aria-hidden="true">秋</span>
-          <div class="scene-controls"><span>계절 이미지 · AI 제작</span><button id="motion-toggle" type="button" aria-pressed="false" hidden>움직임 멈추기</button></div>
+          <div class="scene-controls"><span>분위기 이미지 · AI 제작</span><button id="motion-toggle" type="button" aria-pressed="false" hidden>움직임 멈추기</button></div>
         </aside>
       </section>
 
       <section id="panel-projects" class="tab-panel projects-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-projects">
-        <header class="panel-heading"><div><p class="eyebrow">작업 파일 · 4</p><h2>프로젝트 기록</h2></div><p>README와 권주회 명의 커밋에서 확인한 내용입니다.</p></header>
+        <header class="panel-heading"><div><p class="eyebrow">PROJECTS · 4</p><h2>주요 프로젝트</h2></div><p>프로젝트별 역할과 구현 내용을 정리했습니다.</p></header>
         <div class="project-browser">
           <div class="project-tabs" role="tablist" aria-label="프로젝트 선택" aria-orientation="vertical">
-            <button id="project-tab-onwear" class="project-tab" type="button" role="tab" aria-selected="true" aria-controls="project-onwear"><span>01</span><strong>On-Wear</strong><small>특화 · FE</small></button>
-            <button id="project-tab-daltoori" class="project-tab" type="button" role="tab" aria-selected="false" aria-controls="project-daltoori" tabindex="-1"><span>02</span><strong>달투리</strong><small>자율 · BE/AI</small></button>
-            <button id="project-tab-focusmate" class="project-tab" type="button" role="tab" aria-selected="false" aria-controls="project-focusmate" tabindex="-1"><span>03</span><strong>FocusMate</strong><small>공통 · FE</small></button>
-            <button id="project-tab-hanpage" class="project-tab" type="button" role="tab" aria-selected="false" aria-controls="project-hanpage" tabindex="-1"><span>04</span><strong>한페이지</strong><small>관통 · Full-stack</small></button>
+            <button id="project-tab-hanpage" class="project-tab" type="button" role="tab" aria-selected="true" aria-controls="project-hanpage"><span>01</span><strong>한페이지</strong><small>Full-stack</small></button>
+            <button id="project-tab-focusmate" class="project-tab" type="button" role="tab" aria-selected="false" aria-controls="project-focusmate" tabindex="-1"><span>02</span><strong>FocusMate</strong><small>Frontend</small></button>
+            <button id="project-tab-onwear" class="project-tab" type="button" role="tab" aria-selected="false" aria-controls="project-onwear" tabindex="-1"><span>03</span><strong>On-Wear</strong><small>Frontend</small></button>
+            <button id="project-tab-daltoori" class="project-tab" type="button" role="tab" aria-selected="false" aria-controls="project-daltoori" tabindex="-1"><span>04</span><strong>달투리</strong><small>Backend · AI</small></button>
           </div>
 
-          <article id="project-onwear" class="project-detail" role="tabpanel" tabindex="0" aria-labelledby="project-tab-onwear">
-            <div class="project-title"><div><p>2025.08.25 — 09.29 · 6인</p><h3>On-Wear</h3></div><span>virtual try-on</span></div>
-            <p class="project-lead">사진 기반 가상 시착과 개인화 의류 추천을 제공하는 웹 서비스입니다.</p>
-            <div class="project-facts"><div><h4>확인된 역할</h4><p>소셜 로그인과 실시간 검색, 인기·검색 화면, 의류 상세·검색 모달을 담당했습니다.</p></div><div><h4>커밋에서 확인</h4><p>검색 필터와 페이지네이션, 무한 스크롤, 찜 처리, Escape 모달 닫기와 비회원 최근 검색 세션을 반복 보완했습니다.</p></div></div>
-            <p class="stack">React · TypeScript · Vite · Zustand · Emotion · Sass</p>
-            <div class="project-links"><a href="https://github.com/On-Wear-SSAFY-13">프로젝트 소개 ↗</a><a href="https://github.com/On-Wear-SSAFY-13/On-Wear-FE/commits/develop/?author=rnjswnghl">내 커밋 보기 ↗</a></div>
-          </article>
-
-          <article id="project-daltoori" class="project-detail" role="tabpanel" tabindex="0" aria-labelledby="project-tab-daltoori">
-            <div class="project-title"><div><p>5인 팀 프로젝트</p><h3>달투리</h3></div><span>speech analysis</span></div>
-            <p class="project-lead">한국어 발음과 억양을 분석하고 연습 피드백을 제공하는 모바일 서비스입니다.</p>
-            <div class="project-facts"><div><h4>확인된 역할</h4><p>BE·AI 파트에서 TTS 구현과 배포, 음성 분석·평가, AI 피드백, 분석·평가·기록 FastAPI를 맡았습니다.</p></div><div><h4>커밋에서 확인</h4><p>FastAPI 인증과 평가 시스템, 즉시 피드백 API, 참조 음성 자동 생성, 피드백 이력 URL과 평가 로직을 구현·수정했습니다.</p></div></div>
-            <p class="stack">FastAPI · Python · MeloTTS · Whisper · MFA · Firebase</p>
-            <div class="project-links"><a href="https://github.com/DALTOORI-SSAFY-13/e101">저장소 보기 ↗</a><a href="https://github.com/DALTOORI-SSAFY-13/e101/commits/master/?author=rnjswnghl">내 커밋 보기 ↗</a></div>
+          <article id="project-hanpage" class="project-detail" role="tabpanel" tabindex="0" aria-labelledby="project-tab-hanpage">
+            <div class="project-title"><div><p>2025.05.22 — 05.28 · 2인</p><h3>한페이지</h3></div><span>Team Lead · Full-stack</span></div>
+            <p class="project-lead">도서를 검색하고 취향에 맞는 책을 추천받으며 독서 기록을 나누는 웹 서비스입니다.</p>
+            <div class="project-facts"><div><h4>담당 업무</h4><p>팀장으로 초기 데이터 구성과 전처리, Django 백엔드 구조 설계, 도서 탐색·추천 화면을 맡았습니다.</p></div><div><h4>주요 구현</h4><p>알라딘 API 데이터 수집, 검색·카테고리 필터, 저자·장르·랜덤 추천, 마이페이지와 Kakao Maps 기능을 구현했습니다.</p></div></div>
+            <p class="stack">Django · Django REST Framework · Vue.js · SQLite · Aladin API</p>
           </article>
 
           <article id="project-focusmate" class="project-detail" role="tabpanel" tabindex="0" aria-labelledby="project-tab-focusmate">
-            <div class="project-title"><div><p>공통 프로젝트 · FE</p><h3>FocusMate</h3></div><span>study platform</span></div>
-            <p class="project-lead">스터디 생성·참여·검색과 학습 활동을 한곳에서 관리하는 Vue 기반 스터디 플랫폼입니다.</p>
-            <div class="project-facts"><div><h4>확인된 작업</h4><p>스터디 생성·검색·상세, 리더·팀원 화면 분기, 공지·게시글, 프로필과 마이페이지 UI를 구현·수정했습니다.</p></div><div><h4>커밋에서 확인</h4><p>일정과 활동 로그, 매칭 결과, 출석 퀴즈, 스터디룸 비밀번호와 OpenVidu 연결을 통합하며 오류를 보완했습니다.</p></div></div>
+            <div class="project-title"><div><p>2025.07.27 — 08.18</p><h3>FocusMate</h3></div><span>Frontend</span></div>
+            <p class="project-lead">스터디 모집부터 일정·출석·화상 학습까지 한곳에서 관리하는 웹 서비스입니다.</p>
+            <div class="project-facts"><div><h4>담당 업무</h4><p>스터디 생성·검색·상세 화면과 리더·팀원 권한별 화면, 공지·게시글, 프로필·마이페이지를 개발했습니다.</p></div><div><h4>주요 구현</h4><p>Pinia 기반 상태 관리와 API 연동, 일정·활동 로그, 출석 퀴즈, 스터디룸 비밀번호 및 OpenVidu 화상 연결을 구현했습니다.</p></div></div>
             <p class="stack">Vue.js · TypeScript · Vite · Pinia · OpenVidu</p>
-            <div class="project-links"><a href="https://github.com/rnjswnghl/focusmate">통합 저장본 ↗</a><a href="https://github.com/rnjswnghl/rnjswnghl--gongtong_frontend/commits/master/?author=rnjswnghl">프론트엔드 커밋 ↗</a></div>
+            <div class="project-links"><a href="https://github.com/rnjswnghl/rnjswnghl--gongtong_frontend">GitHub Repository ↗</a></div>
           </article>
 
-          <article id="project-hanpage" class="project-detail" role="tabpanel" tabindex="0" aria-labelledby="project-tab-hanpage">
-            <div class="project-title"><div><p>2인 팀 · 팀장 · 당시 미배포</p><h3>한페이지</h3></div><span>book curation</span></div>
-            <p class="project-lead">도서 탐색과 추천, 독서 기록을 연결한 Django·Vue 웹 프로젝트입니다.</p>
-            <div class="project-facts"><div><h4>확인된 역할</h4><p>알라딘 API 초기 데이터와 전처리, Django 초기 구조, 도서 목록·상세·추천, 마이페이지와 지도 기능을 맡았습니다.</p></div><div><h4>커밋에서 확인</h4><p>도서 검색과 카테고리, 저자·장르·랜덤 추천, 사용자 프로필·팔로우, 방명록과 Kakao Maps 기능을 구현·수정했습니다.</p></div></div>
-            <p class="stack">Django · Django REST Framework · Vue.js · SQLite · Aladin API</p>
-            <div class="project-links"><a href="https://github.com/rnjswnghl/09-pjt/tree/master">저장소 보기 ↗</a><a href="https://github.com/rnjswnghl/09-pjt/commits/master/?author=rnjswnghl">내 커밋 보기 ↗</a></div>
+          <article id="project-onwear" class="project-detail" role="tabpanel" tabindex="0" aria-labelledby="project-tab-onwear">
+            <div class="project-title"><div><p>2025.08.25 — 09.29 · 6인</p><h3>On-Wear</h3></div><span>Frontend</span></div>
+            <p class="project-lead">사진 한 장으로 의상을 가상 시착하고 개인화된 의류를 추천받는 웹 서비스입니다.</p>
+            <div class="project-facts"><div><h4>담당 업무</h4><p>소셜 로그인과 실시간 검색, 인기·검색 결과 화면, 의류 상세·검색 모달을 개발했습니다.</p></div><div><h4>주요 구현</h4><p>검색 필터·페이지네이션·무한 스크롤, 찜 상태 처리, 비회원 최근 검색어 저장과 모달 키보드 조작을 구현했습니다.</p></div></div>
+            <p class="stack">React · TypeScript · Vite · Zustand · Emotion · Sass</p>
+            <div class="project-links"><a href="https://github.com/On-Wear-SSAFY-13/On-Wear-FE">GitHub Repository ↗</a></div>
+          </article>
+
+          <article id="project-daltoori" class="project-detail" role="tabpanel" tabindex="0" aria-labelledby="project-tab-daltoori">
+            <div class="project-title"><div><p>2025.10.30 — 11.24 · 5인</p><h3>달투리</h3></div><span>Backend · AI</span></div>
+            <p class="project-lead">한국어 발음과 억양을 분석해 학습자에게 연습 피드백을 제공하는 모바일 서비스입니다.</p>
+            <div class="project-facts"><div><h4>담당 업무</h4><p>음성 분석·평가와 AI 피드백, TTS, 분석·평가·학습 기록을 제공하는 FastAPI 서버를 개발했습니다.</p></div><div><h4>주요 구현</h4><p>평가·즉시 피드백 API, 참조 음성 자동 생성, Firebase 저장 경로와 피드백 이력 URL, 비동기 처리 로직을 구현했습니다.</p></div></div>
+            <p class="stack">FastAPI · Python · MeloTTS · Whisper · MFA · Firebase</p>
+            <div class="project-links"><a href="https://github.com/DALTOORI-SSAFY-13/e101">GitHub Repository ↗</a></div>
           </article>
         </div>
       </section>
 
       <section id="panel-about" class="tab-panel about-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-about">
-        <div class="about-title"><p class="eyebrow">관심과 방향</p><h2>기능을 화면으로 잇고,<br>끝까지 다듬는 일.</h2><p class="brush-note">배우고 · 연결하고 · 다시 고치기</p></div>
+        <div class="about-title"><p class="eyebrow">ABOUT ME</p><h2>화면과 데이터를<br>연결하는 개발자.</h2><p class="brush-note">사용자 흐름 · 구현 · 개선</p></div>
         <div class="about-copy">
-          <p>러시아학과 빅데이터학을 공부했습니다. 프로젝트에서는 Vue와 React 화면을 만들었고, 필요에 따라 Django 백엔드와 FastAPI 기반 음성 분석도 맡았습니다.</p>
-          <p>커밋에는 검색과 필터, 상세 화면과 모달, 사용자 상태 분기, API 연결을 구현한 뒤 오류와 사용 흐름을 반복해서 고친 기록이 남아 있습니다. 지금은 이 경험을 바탕으로 읽기 쉽고 쓰기 편한 프론트엔드를 더 깊게 공부하고 있습니다.</p>
-          <div class="interest-list"><span>프론트엔드</span><span>사용자 흐름</span><span>데이터 시각화</span><span>협업과 기록</span></div>
+          <p>러시아학과 빅데이터학을 공부한 뒤 웹 개발 프로젝트를 수행했습니다. React와 Vue를 중심으로 화면을 구현했고, Django와 FastAPI를 사용해 백엔드와 AI 기능도 개발했습니다.</p>
+          <p>검색과 필터, 권한별 화면, 상태 관리와 API 연동처럼 사용자가 직접 마주하는 흐름을 주로 다뤘습니다. 기능을 구현한 뒤 실제 사용 과정에서 생기는 오류를 다시 확인하고 개선합니다.</p>
+          <div class="interest-list"><span>React</span><span>Vue.js</span><span>TypeScript</span><span>FastAPI</span></div>
         </div>
       </section>
 
       <section id="panel-records" class="tab-panel records-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-records">
-        <header class="panel-heading"><div><p class="eyebrow">공개 근거 · 5</p><h2>저장소와 커밋</h2></div><p>팀 결과와 개인 기여를 구분해 확인할 수 있습니다.</p></header>
+        <header class="panel-heading"><div><p class="eyebrow">LINKS</p><h2>프로젝트 저장소</h2></div><p>코드와 작업 이력을 확인할 수 있는 저장소입니다.</p></header>
         <div class="record-list">
-          <a href="https://github.com/On-Wear-SSAFY-13"><span>01</span><strong>On-Wear</strong><small>조직 README에 권주회 FE 역할 기재</small><b>열기 ↗</b></a>
-          <a href="https://github.com/DALTOORI-SSAFY-13/e101"><span>02</span><strong>달투리</strong><small>팀 README와 BE·AI 커밋</small><b>열기 ↗</b></a>
-          <a href="https://github.com/rnjswnghl/focusmate"><span>03</span><strong>FocusMate</strong><small>공통 프로젝트 통합 저장본</small><b>열기 ↗</b></a>
-          <a href="https://github.com/rnjswnghl/rnjswnghl--gongtong_frontend"><span>04</span><strong>FocusMate FE</strong><small>프론트엔드 구현 커밋 이력</small><b>열기 ↗</b></a>
-          <a href="https://github.com/rnjswnghl/09-pjt/tree/master"><span>05</span><strong>한페이지</strong><small>팀 역할·기능·미배포 상태 기록</small><b>열기 ↗</b></a>
+          <a href="https://github.com/rnjswnghl/rnjswnghl--gongtong_frontend"><span>01</span><strong>FocusMate</strong><small>Frontend Repository</small><b>GitHub ↗</b></a>
+          <a href="https://github.com/On-Wear-SSAFY-13/On-Wear-FE"><span>02</span><strong>On-Wear</strong><small>Frontend Repository</small><b>GitHub ↗</b></a>
+          <a href="https://github.com/DALTOORI-SSAFY-13/e101"><span>03</span><strong>달투리</strong><small>Project Repository</small><b>GitHub ↗</b></a>
         </div>
-        <div class="record-note"><p>프로젝트 설명은 공개 README와 <strong>rnjswnghl</strong> 계정의 커밋을 기준으로 작성했습니다. 팀 전체 기능이나 성과 수치는 개인 성과로 적지 않았습니다.</p><details><summary>이 페이지의 공개 범위</summary><p>이름, 전공과 관심사, 공개 저장소에서 확인 가능한 프로젝트 역할과 커밋만 사용했습니다. 연락처, 성적표·증명서 원본, 제3자 개인정보와 인증 정보는 공개하지 않습니다.</p></details></div>
       </section>
     </div>
   </main>
 
-  <footer class="footer"><span>JOOHOE KWON <span aria-hidden="true">©</span> 2026</span><span>확인 가능한 기록으로 소개합니다.</span><a href="https://github.com/rnjswnghl">GitHub ↗</a></footer>
+  <footer class="footer"><span>JOOHOE KWON <span aria-hidden="true">©</span> 2026</span><span>Frontend Developer Portfolio</span><a href="https://github.com/rnjswnghl">GitHub ↗</a></footer>
 </div>
 </body>
 </html>
