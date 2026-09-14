@@ -1,16 +1,76 @@
-// Content remains readable if scripting is disabled or fails to initialize.
-document.querySelectorAll('.expand').forEach((button) => {
-  const panel = document.getElementById(button.getAttribute('aria-controls'));
-  panel.hidden = true;
-  button.hidden = false;
+const folderTabs = [...document.querySelectorAll('.folder-tab')];
+const folderPanels = [...document.querySelectorAll('.tab-panel')];
+const routeAliases = { stories: 'projects', evidence: 'records' };
+
+function activateFolder(route, updateHash = true) {
+  const normalized = routeAliases[route] || route;
+  const activeTab = folderTabs.find((tab) => tab.dataset.route === normalized) || folderTabs[0];
+
+  folderTabs.forEach((tab) => {
+    const selected = tab === activeTab;
+    tab.setAttribute('aria-selected', String(selected));
+    tab.tabIndex = selected ? 0 : -1;
+  });
+  folderPanels.forEach((panel) => {
+    panel.hidden = panel.id !== activeTab.getAttribute('aria-controls');
+  });
+
+  if (updateHash) history.pushState(null, '', `#${activeTab.dataset.route}`);
+}
+
+function bindArrowKeys(tabs, activate) {
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('keydown', (event) => {
+      const horizontal = event.key === 'ArrowRight' || event.key === 'ArrowLeft';
+      const vertical = event.key === 'ArrowDown' || event.key === 'ArrowUp';
+      if (!horizontal && !vertical && event.key !== 'Home' && event.key !== 'End') return;
+      event.preventDefault();
+      let next = index;
+      if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = tabs.length - 1;
+      else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % tabs.length;
+      else next = (index - 1 + tabs.length) % tabs.length;
+      tabs[next].focus();
+      activate(tabs[next]);
+    });
+  });
+}
+
+folderTabs.forEach((tab) => tab.addEventListener('click', () => activateFolder(tab.dataset.route)));
+bindArrowKeys(folderTabs, (tab) => activateFolder(tab.dataset.route));
+document.querySelectorAll('[data-open-tab]').forEach((button) => {
   button.addEventListener('click', () => {
-    const expanded = button.getAttribute('aria-expanded') === 'true';
-    const panel = document.getElementById(button.getAttribute('aria-controls'));
-    button.setAttribute('aria-expanded', String(!expanded));
-    panel.hidden = expanded;
-    button.innerHTML = `${expanded ? '과정 읽기' : '과정 접기'} <span aria-hidden="true">${expanded ? '＋' : '−'}</span>`;
+    activateFolder(button.dataset.openTab);
+    document.querySelector(`[data-route="${button.dataset.openTab}"]`).focus();
   });
 });
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const route = link.getAttribute('href').slice(1);
+    if (!folderTabs.some((tab) => tab.dataset.route === (routeAliases[route] || route))) return;
+    event.preventDefault();
+    activateFolder(route);
+  });
+});
+window.addEventListener('hashchange', () => activateFolder(location.hash.slice(1), false));
+
+const projectTabs = [...document.querySelectorAll('.project-tab')];
+const projectPanels = [...document.querySelectorAll('.project-detail')];
+
+function activateProject(tab) {
+  projectTabs.forEach((item) => {
+    const selected = item === tab;
+    item.setAttribute('aria-selected', String(selected));
+    item.tabIndex = selected ? 0 : -1;
+  });
+  projectPanels.forEach((panel) => {
+    panel.hidden = panel.id !== tab.getAttribute('aria-controls');
+  });
+}
+
+projectTabs.forEach((tab) => tab.addEventListener('click', () => activateProject(tab)));
+bindArrowKeys(projectTabs, activateProject);
 
 const motionToggle = document.getElementById('motion-toggle');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -32,4 +92,7 @@ motionToggle.addEventListener('click', () => {
   syncMotion();
 });
 reducedMotion.addEventListener('change', syncMotion);
+
+projectPanels.slice(1).forEach((panel) => { panel.hidden = true; });
+activateFolder(location.hash.slice(1) || 'intro', false);
 syncMotion();
