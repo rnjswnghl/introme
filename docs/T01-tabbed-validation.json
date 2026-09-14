@@ -1,0 +1,130 @@
+{
+  "viewports": [
+    {
+      "width": 1366,
+      "height": 768,
+      "name": "1366",
+      "introVisible": true,
+      "visibleAfterClick": 1,
+      "projectNames": [
+        "On-Wear",
+        "달투리",
+        "FocusMate",
+        "한페이지"
+      ],
+      "keyboardSelected": "true",
+      "hashSelected": "true",
+      "overflow": 0,
+      "visiblePanels": 1,
+      "imagesLoaded": true,
+      "fonts": [
+        {
+          "family": "Nanum Myeongjo",
+          "status": "loaded"
+        },
+        {
+          "family": "Pretendard",
+          "status": "loaded"
+        }
+      ],
+      "h1Count": 1,
+      "repositoryLinks": 15
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "name": "1920",
+      "introVisible": true,
+      "visibleAfterClick": 1,
+      "projectNames": [
+        "On-Wear",
+        "달투리",
+        "FocusMate",
+        "한페이지"
+      ],
+      "keyboardSelected": "true",
+      "hashSelected": "true",
+      "overflow": 0,
+      "visiblePanels": 1,
+      "imagesLoaded": true,
+      "fonts": [
+        {
+          "family": "Nanum Myeongjo",
+          "status": "loaded"
+        },
+        {
+          "family": "Pretendard",
+          "status": "loaded"
+        }
+      ],
+      "h1Count": 1,
+      "repositoryLinks": 15
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "390",
+      "introVisible": true,
+      "visibleAfterClick": 1,
+      "projectNames": [
+        "On-Wear",
+        "달투리",
+        "FocusMate",
+        "한페이지"
+      ],
+      "keyboardSelected": "true",
+      "hashSelected": "true",
+      "overflow": 0,
+      "visiblePanels": 1,
+      "imagesLoaded": true,
+      "fonts": [
+        {
+          "family": "Nanum Myeongjo",
+          "status": "loaded"
+        },
+        {
+          "family": "Pretendard",
+          "status": "loaded"
+        }
+      ],
+      "h1Count": 1,
+      "repositoryLinks": 15
+    },
+    {
+      "width": 320,
+      "height": 700,
+      "name": "320",
+      "introVisible": true,
+      "visibleAfterClick": 1,
+      "projectNames": [
+        "On-Wear",
+        "달투리",
+        "FocusMate",
+        "한페이지"
+      ],
+      "keyboardSelected": "true",
+      "hashSelected": "true",
+      "overflow": 0,
+      "visiblePanels": 1,
+      "imagesLoaded": true,
+      "fonts": [
+        {
+          "family": "Nanum Myeongjo",
+          "status": "loaded"
+        },
+        {
+          "family": "Pretendard",
+          "status": "loaded"
+        }
+      ],
+      "h1Count": 1,
+      "repositoryLinks": 15
+    }
+  ],
+  "consoleErrors": [],
+  "failedRequests": [],
+  "withoutJavaScript": {
+    "visibleFolderPanels": 4,
+    "visibleProjectPanels": 4
+  }
+}
