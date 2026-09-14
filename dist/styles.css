@@ -26,3 +26,17 @@
 @media(min-width:1001px) and (max-width:1599px){.header{height:76px}.hero{padding:25px 0 0}}
 .vertical-note{height:112px;top:0;font-size:.75rem;letter-spacing:.06em}
 @media(max-width:700px){.vertical-note{font-size:.6875rem;height:110px}}
+
+/* Reference study: a restrained archive index laid over warm hanji-like paper. */
+body{background-color:#f3eee3;background-image:radial-gradient(circle at 20% 15%,#fff9 0,transparent 25%),repeating-linear-gradient(88deg,#6f5d480a 0,#6f5d480a 1px,transparent 1px,transparent 7px)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.18;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E")}
+.folio-meta{display:flex;gap:16px;margin:0 0 16px;font:500 .56rem/1.2 Pretendard,sans-serif;letter-spacing:.17em;color:var(--muted)}
+.folio-meta span+span{border-left:1px solid var(--line);padding-left:16px}
+.folio-index{display:grid;grid-template-columns:1.2fr repeat(3,1fr);align-items:end;position:relative;z-index:2;margin-top:2px;padding:0 24px}
+.folio-tab{position:relative;display:flex;align-items:center;justify-content:center;gap:10px;min-height:42px;padding:9px 18px 8px;border:1px solid var(--line);border-bottom:0;border-radius:15px 15px 0 0;background:#e7ddcc;color:var(--muted);font-size:.75rem;text-decoration:none;transform:translateY(1px);transition:color .2s,background-color .2s,transform .2s}
+.folio-tab+.folio-tab{margin-left:-1px}.folio-tab:nth-child(2){background:#ded5c7}.folio-tab:nth-child(3){background:#d5d3c2}.folio-tab:nth-child(4){background:#c8cebb}.folio-tab span{font:400 .65rem/1 var(--serif);color:var(--accent)}.folio-tab:hover,.folio-tab:focus-visible{color:var(--ink);background:var(--card);transform:translateY(-4px)}.folio-tab.is-current{justify-content:flex-start;background:var(--card);color:var(--ink);padding-left:28px}
+.archive-sheet{position:relative;z-index:1;background:#faf7f0e8;border:1px solid var(--line);box-shadow:0 20px 55px #604c3420;padding:30px 30px 0}
+.archive-sheet::after{content:"ARCHIVE / PERSONAL RECORD";position:absolute;right:-25px;top:96px;writing-mode:vertical-rl;font:500 .5rem/1 Pretendard,sans-serif;letter-spacing:.2em;color:#8b7c6966}
+.stories{position:relative}.stories::before{content:"";position:absolute;left:-31px;top:58px;width:2px;height:82px;background:var(--accent)}
+.about{padding-top:68px}.evidence{padding-top:52px}
+@media(max-width:700px){.folio-meta{margin-bottom:13px}.folio-index{grid-template-columns:repeat(4,1fr);padding:0 6px}.folio-tab,.folio-tab.is-current{min-height:39px;padding:8px 4px;justify-content:center;border-radius:10px 10px 0 0}.folio-tab{gap:5px}.folio-tab span{font-size:.58rem}.archive-sheet{padding:25px 18px 0}.archive-sheet::after,.stories::before{display:none}.about{padding-top:46px}}
