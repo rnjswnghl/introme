@@ -7,10 +7,10 @@
       "introVisible": true,
       "visibleAfterClick": 1,
       "projectNames": [
-        "On-Wear",
-        "달투리",
+        "한페이지",
         "FocusMate",
-        "한페이지"
+        "On-Wear",
+        "달투리"
       ],
       "keyboardSelected": "true",
       "hashSelected": "true",
@@ -28,7 +28,7 @@
         }
       ],
       "h1Count": 1,
-      "repositoryLinks": 15
+      "repositoryLinks": 8
     },
     {
       "width": 1920,
@@ -37,10 +37,10 @@
       "introVisible": true,
       "visibleAfterClick": 1,
       "projectNames": [
-        "On-Wear",
-        "달투리",
+        "한페이지",
         "FocusMate",
-        "한페이지"
+        "On-Wear",
+        "달투리"
       ],
       "keyboardSelected": "true",
       "hashSelected": "true",
@@ -58,7 +58,7 @@
         }
       ],
       "h1Count": 1,
-      "repositoryLinks": 15
+      "repositoryLinks": 8
     },
     {
       "width": 390,
@@ -67,10 +67,10 @@
       "introVisible": true,
       "visibleAfterClick": 1,
       "projectNames": [
-        "On-Wear",
-        "달투리",
+        "한페이지",
         "FocusMate",
-        "한페이지"
+        "On-Wear",
+        "달투리"
       ],
       "keyboardSelected": "true",
       "hashSelected": "true",
@@ -88,7 +88,7 @@
         }
       ],
       "h1Count": 1,
-      "repositoryLinks": 15
+      "repositoryLinks": 8
     },
     {
       "width": 320,
@@ -97,10 +97,10 @@
       "introVisible": true,
       "visibleAfterClick": 1,
       "projectNames": [
-        "On-Wear",
-        "달투리",
+        "한페이지",
         "FocusMate",
-        "한페이지"
+        "On-Wear",
+        "달투리"
       ],
       "keyboardSelected": "true",
       "hashSelected": "true",
@@ -118,7 +118,7 @@
         }
       ],
       "h1Count": 1,
-      "repositoryLinks": 15
+      "repositoryLinks": 8
     }
   ],
   "consoleErrors": [],

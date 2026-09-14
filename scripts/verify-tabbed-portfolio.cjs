@@ -35,7 +35,7 @@ const fs = require('fs');
     await page.goto('http://127.0.0.1:4173/#records', { waitUntil: 'networkidle' });
     const hashSelected = await page.locator('#tab-records').getAttribute('aria-selected');
     await page.goto('http://127.0.0.1:4173/#projects', { waitUntil: 'networkidle' });
-    await page.locator('#project-tab-onwear').click();
+    await page.locator('#project-tab-hanpage').click();
     await page.waitForTimeout(400);
     await page.screenshot({ path: `docs/screenshots/T01-tabs-${viewport.name}.png`, fullPage: true });
 
@@ -67,7 +67,7 @@ const fs = require('fs');
     item.overflow !== 0 || item.visiblePanels !== 1 || item.visibleAfterClick !== 1 ||
     !item.introVisible || !item.imagesLoaded || item.h1Count !== 1 ||
     item.keyboardSelected !== 'true' || item.hashSelected !== 'true' ||
-    item.projectNames.join('|') !== 'On-Wear|달투리|FocusMate|한페이지'
+    item.projectNames.join('|') !== '한페이지|FocusMate|On-Wear|달투리'
   );
   if (invalid || result.consoleErrors.length || result.failedRequests.length ||
       result.withoutJavaScript.visibleFolderPanels !== 4 || result.withoutJavaScript.visibleProjectPanels !== 4) {
