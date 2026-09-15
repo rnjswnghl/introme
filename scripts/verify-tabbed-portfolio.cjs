@@ -26,9 +26,20 @@ const fs = require('fs');
     const visibleAfterClick = await page.locator('.tab-panel:visible').count();
     const projectNames = [];
     const projectPageHeights = [];
+    const projectShots = [];
+    const troubleshooting = [];
     for (const tab of await page.locator('.project-tab').all()) {
       await tab.click();
       projectNames.push(await page.locator('.project-detail:visible h3').textContent());
+      const shot = page.locator('.project-detail:visible .project-shot');
+      projectShots.push(await shot.locator('img').evaluate((image) => image.complete && image.naturalWidth > 0));
+      await shot.click();
+      projectShots.push(await page.locator('#shot-dialog').evaluate((dialog) => dialog.open));
+      await page.locator('[data-close-dialog]').click();
+      const details = page.locator('.project-detail:visible .troubleshooting');
+      await details.locator('summary').click();
+      troubleshooting.push(await details.evaluate((item) => item.open));
+      await details.locator('summary').click();
       projectPageHeights.push(await page.evaluate(() => document.documentElement.scrollHeight));
     }
     await page.locator('#tab-projects').focus();
@@ -49,7 +60,7 @@ const fs = require('fs');
       h1Count: document.querySelectorAll('h1').length,
       repositoryLinks: document.querySelectorAll('a[href^="https://github.com/"]').length,
     }));
-    result.viewports.push({ ...viewport, introVisible, visibleAfterClick, projectNames, projectPageHeights, keyboardSelected, hashSelected, ...metrics });
+    result.viewports.push({ ...viewport, introVisible, visibleAfterClick, projectNames, projectPageHeights, projectShots, troubleshooting, keyboardSelected, hashSelected, ...metrics });
     await page.close();
   }
 
@@ -70,6 +81,7 @@ const fs = require('fs');
     !item.introVisible || !item.imagesLoaded || item.h1Count !== 1 ||
     item.keyboardSelected !== 'true' || item.hashSelected !== 'true' ||
     item.projectNames.join('|') !== '한페이지|FocusMate|On-Wear|DALTOORI' ||
+    item.projectShots.some((loaded) => !loaded) || item.troubleshooting.some((opened) => !opened) ||
     (item.width >= 1000 && Math.max(...item.projectPageHeights) > item.height + 8)
   );
   if (invalid || result.consoleErrors.length || result.failedRequests.length ||
