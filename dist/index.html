@@ -72,35 +72,29 @@
 
           <article id="project-hanpage" class="project-detail" role="tabpanel" tabindex="0" aria-labelledby="project-tab-hanpage">
             <div class="project-title"><div><p>2025.05.22 — 05.28 · 2인</p><h3>한페이지</h3></div><span>Team Lead · Full-stack</span></div>
-            <p class="project-lead">도서를 검색하고 취향에 맞는 책을 추천받으며 독서 기록을 나누는 웹 서비스입니다.</p>
-            <div class="project-facts"><div><h4>담당 업무</h4><p>팀장으로 초기 데이터 구성과 전처리, Django 백엔드 구조 설계, 도서 탐색·추천 화면을 맡았습니다.</p></div><div><h4>주요 구현</h4><p>알라딘 API 데이터 수집, 검색·카테고리 필터, 저자·장르·랜덤 추천, 마이페이지와 Kakao Maps 기능을 구현했습니다.</p></div><div><h4>문제 해결</h4><p>인증 토큰 오류로 추천 요청이 막히는 문제를 수정하고, 병합 충돌 뒤 마이페이지와 도서 상세 기능을 다시 연결했습니다.</p></div><div><h4>기술 선택</h4><p>짧은 개발 기간에 도서 모델·인증·REST API를 함께 구성하기 위해 Django REST Framework를 사용하고, 실제 도서 데이터는 Aladin API로 확보했습니다.</p></div></div>
-            <p class="stack">Django · Django REST Framework · Vue.js · SQLite · Aladin API</p>
+            <div class="project-overview"><div><p class="project-lead">도서를 검색하고 취향에 맞는 책을 추천받으며 독서 기록을 나누는 웹 서비스입니다.</p><div class="project-facts"><div><h4>담당 업무</h4><p>초기 데이터 구성과 전처리, Django 백엔드 구조, 도서 탐색·추천 화면을 맡았습니다.</p></div><div><h4>주요 구현</h4><p>검색·카테고리 필터, 저자·장르·랜덤 추천, 마이페이지와 지도 기능을 구현했습니다.</p></div></div><p class="stack">Django · DRF · Vue.js · SQLite · Aladin API</p></div><button class="project-shot" type="button" data-shot="assets/projects/hanpage.webp" data-caption="한페이지 메인 화면"><img src="assets/projects/hanpage.webp" alt="한페이지 메인 화면. 베스트셀러와 도서 카테고리가 보인다." width="1200" height="750"><span>실제 데모 화면 · 확대</span></button></div>
+            <details class="troubleshooting"><summary>트러블슈팅과 기술 선택</summary><div class="trouble-grid"><div><h4>인증·병합 문제</h4><p>인증 토큰 오류로 추천 요청이 막히는 문제를 수정하고, 병합 충돌 뒤 마이페이지와 도서 상세 기능을 다시 연결했습니다.</p></div><div><h4>Django REST Framework · Aladin API</h4><p>도서 모델·인증·REST API를 한 서버에 구성하고, 서비스에 필요한 실제 도서 데이터를 확보하기 위해 사용했습니다.</p></div></div></details>
           </article>
 
           <article id="project-focusmate" class="project-detail" role="tabpanel" tabindex="0" aria-labelledby="project-tab-focusmate">
             <div class="project-title"><div><p>2025.07.27 — 08.18</p><h3>FocusMate</h3></div><span>Frontend</span></div>
-            <p class="project-lead">스터디 모집부터 일정·출석·화상 학습까지 한곳에서 관리하는 웹 서비스입니다.</p>
-            <div class="project-facts"><div><h4>담당 업무</h4><p>스터디 생성·검색·상세 화면과 리더·팀원 권한별 화면, 공지·게시글, 프로필·마이페이지를 개발했습니다.</p></div><div><h4>주요 구현</h4><p>Pinia 기반 상태 관리와 API 연동, 일정·활동 로그, 출석 퀴즈, 스터디룸 비밀번호 및 OpenVidu 화상 연결을 구현했습니다.</p></div><div><h4>문제 해결</h4><p>리더·팀원별 경로에서 발생한 404를 수정하고, OpenVidu 세션 API를 스터디 ID 기준으로 정리하며 TypeScript 빌드 오류를 해결했습니다.</p></div><div><h4>기술 선택</h4><p>여러 화면에서 로그인·스터디 상태를 공유하기 위해 Pinia를 사용하고, 브라우저에서 실시간 화상 학습을 제공하기 위해 OpenVidu를 연동했습니다.</p></div></div>
-            <p class="stack">Vue.js · TypeScript · Vite · Pinia · OpenVidu</p>
-            <div class="project-links"><a href="https://github.com/rnjswnghl/rnjswnghl--gongtong_frontend">GitHub Repository ↗</a></div>
+            <div class="project-overview"><div><p class="project-lead">스터디 모집부터 일정·출석·화상 학습까지 한곳에서 관리하는 웹 서비스입니다.</p><div class="project-facts"><div><h4>담당 업무</h4><p>스터디 생성·검색·상세, 권한별 화면, 공지·게시글과 마이페이지를 개발했습니다.</p></div><div><h4>주요 구현</h4><p>상태 관리와 API 연동, 일정·출석 퀴즈, 스터디룸 및 화상 연결을 구현했습니다.</p></div></div><p class="stack">Vue.js · TypeScript · Vite · Pinia · OpenVidu</p><div class="project-links"><a href="https://github.com/rnjswnghl/rnjswnghl--gongtong_frontend">GitHub Repository ↗</a></div></div><button class="project-shot" type="button" data-shot="assets/projects/focusmate.webp" data-caption="FocusMate 메인 화면"><img src="assets/projects/focusmate.webp" alt="FocusMate 메인 화면. 스터디 검색과 서비스 기능이 보인다." width="1200" height="750"><span>실제 데모 화면 · 확대</span></button></div>
+            <details class="troubleshooting"><summary>트러블슈팅과 기술 선택</summary><div class="trouble-grid"><div><h4>권한별 라우팅·타입 오류</h4><p>리더·팀원 경로의 404를 수정하고, OpenVidu 세션 API를 스터디 ID 기준으로 정리해 TypeScript 빌드 오류를 해결했습니다.</p></div><div><h4>Pinia · OpenVidu</h4><p>여러 화면의 로그인·스터디 상태를 공유하기 위해 Pinia를, 브라우저에서 실시간 화상 학습을 제공하기 위해 OpenVidu를 사용했습니다.</p></div></div></details>
           </article>
 
           <article id="project-onwear" class="project-detail" role="tabpanel" tabindex="0" aria-labelledby="project-tab-onwear">
             <div class="project-title"><div><p>2025.08.25 — 09.29 · 6인</p><h3>On-Wear</h3></div><span>Frontend</span></div>
-            <p class="project-lead">사진 한 장으로 의상을 가상 시착하고 개인화된 의류를 추천받는 웹 서비스입니다.</p>
-            <div class="project-facts"><div><h4>담당 업무</h4><p>소셜 로그인과 실시간 검색, 인기·검색 결과 화면, 의류 상세·검색 모달을 개발했습니다.</p></div><div><h4>주요 구현</h4><p>검색 필터·페이지네이션·무한 스크롤, 찜 상태 처리, 비회원 최근 검색어 저장과 모달 키보드 조작을 구현했습니다.</p></div><div><h4>문제 해결</h4><p>검색 조건이 늘어나며 필터 상태와 결과 화면이 어긋나는 문제를 수정하고, 찜 요청을 like·unlike로 구분해 UI 상태를 맞췄습니다.</p></div><div><h4>기술 선택</h4><p>새로고침 뒤에도 인증 상태를 유지하기 위해 Zustand Persist를 사용하고, Axios 인터셉터에서 토큰 주입과 인증 오류 처리를 한곳에 모았습니다.</p></div></div>
-            <p class="stack">React · TypeScript · Vite · Zustand · Emotion · Sass</p>
-            <div class="project-links"><a href="https://github.com/On-Wear-SSAFY-13/On-Wear-FE">GitHub Repository ↗</a></div>
+            <div class="project-overview"><div><p class="project-lead">사진 한 장으로 의상을 가상 시착하고 개인화된 의류를 추천받는 웹 서비스입니다.</p><div class="project-facts"><div><h4>담당 업무</h4><p>소셜 로그인과 실시간 검색, 인기·검색 결과, 의류 상세·검색 모달을 개발했습니다.</p></div><div><h4>주요 구현</h4><p>필터·페이지네이션·무한 스크롤, 찜 상태, 비회원 최근 검색어를 구현했습니다.</p></div></div><p class="stack">React · TypeScript · Vite · Zustand · Emotion</p><div class="project-links"><a href="https://github.com/On-Wear-SSAFY-13/On-Wear-FE">GitHub Repository ↗</a></div></div><button class="project-shot" type="button" data-shot="assets/projects/onwear.webp" data-caption="On-Wear 메인 화면"><img src="assets/projects/onwear.webp" alt="On-Wear 메인 화면. 가상 피팅, 이미지 검색, 추천과 인기 상품 메뉴가 보인다." width="1200" height="750"><span>실제 데모 화면 · 확대</span></button></div>
+            <details class="troubleshooting"><summary>트러블슈팅과 기술 선택</summary><div class="trouble-grid"><div><h4>필터·찜 상태 동기화</h4><p>검색 조건과 결과 화면이 어긋나는 문제를 수정하고, 찜 요청을 like·unlike로 구분해 서버 응답과 UI 상태를 맞췄습니다.</p></div><div><h4>Zustand Persist · Axios</h4><p>새로고침 뒤에도 인증 상태를 유지하고, 인터셉터에서 토큰 주입과 인증 오류 처리를 한곳에 모으기 위해 사용했습니다.</p></div></div></details>
           </article>
 
           <article id="project-daltoori" class="project-detail" role="tabpanel" tabindex="0" aria-labelledby="project-tab-daltoori">
             <div class="project-title"><div><p>2025.10.30 — 11.24 · 5인</p><h3>DALTOORI</h3></div><span>Backend · AI</span></div>
-            <p class="project-lead">한국어 발음과 억양을 분석해 학습자에게 연습 피드백을 제공하는 모바일 서비스입니다.</p>
-            <div class="project-facts"><div><h4>담당 업무</h4><p>음성 분석·평가와 AI 피드백, TTS, 분석·평가·학습 기록을 제공하는 FastAPI 서버를 개발했습니다.</p></div><div><h4>주요 구현</h4><p>평가·즉시 피드백 API, 참조 음성 자동 생성, Firebase 저장 경로와 피드백 이력 URL, 비동기 처리 로직을 구현했습니다.</p></div><div><h4>문제 해결</h4><p>평가 점수 추출 순서를 수정하고 Whisper 인식과 MFA 평가 로직을 보완했습니다. 긴 분석 요청은 비동기로 전환해 응답 흐름을 분리했습니다.</p></div><div><h4>기술 선택</h4><p>Whisper로 음성을 텍스트로 변환하고 MFA로 발음 구간을 정렬했습니다. MeloTTS는 비교용 표준 음성을 만들고, FastAPI는 분석 모델을 API로 제공하는 데 사용했습니다.</p></div></div>
-            <p class="stack">FastAPI · Python · MeloTTS · Whisper · MFA · Firebase</p>
-            <div class="project-links"><a href="https://github.com/DALTOORI-SSAFY-13/e101">GitHub Repository ↗</a></div>
+            <div class="project-overview"><div><p class="project-lead">한국어 발음과 억양을 분석해 학습자에게 연습 피드백을 제공하는 모바일 서비스입니다.</p><div class="project-facts"><div><h4>담당 업무</h4><p>음성 분석·평가, AI 피드백, TTS와 학습 기록 FastAPI를 개발했습니다.</p></div><div><h4>주요 구현</h4><p>즉시 피드백 API, 참조 음성 생성, Firebase 경로와 비동기 처리를 구현했습니다.</p></div></div><p class="stack">FastAPI · Python · MeloTTS · Whisper · MFA · Firebase</p><div class="project-links"><a href="https://github.com/DALTOORI-SSAFY-13/e101">GitHub Repository ↗</a></div></div><button class="project-shot project-shot-phone" type="button" data-shot="assets/projects/daltoori.webp" data-caption="DALTOORI 홈 화면"><img src="assets/projects/daltoori.webp" alt="DALTOORI 모바일 홈 화면. 학습 요약과 시작 버튼이 보인다." width="390" height="844"><span>실제 데모 화면 · 확대</span></button></div>
+            <details class="troubleshooting"><summary>트러블슈팅과 기술 선택</summary><div class="trouble-grid"><div><h4>음성 평가·응답 처리</h4><p>점수 추출 순서를 수정하고 Whisper 인식과 MFA 평가를 보완했습니다. 긴 분석 요청은 비동기로 전환했습니다.</p></div><div><h4>Whisper · MFA · MeloTTS · FastAPI</h4><p>음성 인식, 발음 구간 정렬, 비교용 표준 음성 생성, 분석 모델의 API 제공을 각각 분리해 구성했습니다.</p></div></div></details>
           </article>
         </div>
+        <dialog id="shot-dialog" class="shot-dialog" aria-labelledby="shot-caption"><button type="button" data-close-dialog aria-label="확대 이미지 닫기">닫기 ×</button><img src="" alt=""><p id="shot-caption"></p></dialog>
       </section>
 
       <section id="panel-about" class="tab-panel about-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-about">

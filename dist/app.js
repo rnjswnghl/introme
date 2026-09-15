@@ -72,6 +72,22 @@ function activateProject(tab) {
 projectTabs.forEach((tab) => tab.addEventListener('click', () => activateProject(tab)));
 bindArrowKeys(projectTabs, activateProject);
 
+const shotDialog = document.getElementById('shot-dialog');
+const dialogImage = shotDialog.querySelector('img');
+const dialogCaption = document.getElementById('shot-caption');
+document.querySelectorAll('.project-shot').forEach((button) => {
+  button.addEventListener('click', () => {
+    dialogImage.src = button.dataset.shot;
+    dialogImage.alt = button.dataset.caption;
+    dialogCaption.textContent = button.dataset.caption;
+    shotDialog.showModal();
+  });
+});
+shotDialog.querySelector('[data-close-dialog]').addEventListener('click', () => shotDialog.close());
+shotDialog.addEventListener('click', (event) => {
+  if (event.target === shotDialog) shotDialog.close();
+});
+
 const motionToggle = document.getElementById('motion-toggle');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 let pausedByReader = false;
