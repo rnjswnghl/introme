@@ -72,6 +72,27 @@ function activateProject(tab) {
 projectTabs.forEach((tab) => tab.addEventListener('click', () => activateProject(tab)));
 bindArrowKeys(projectTabs, activateProject);
 
+document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+  const slides = [...carousel.querySelectorAll('.carousel-slide')];
+  const indexText = carousel.querySelector('[data-carousel-index]');
+  const labelText = carousel.querySelector('[data-carousel-label]');
+  let current = 0;
+
+  function showSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      slide.hidden = slideIndex !== current;
+      slide.setAttribute('aria-current', slideIndex === current ? 'true' : 'false');
+    });
+    indexText.textContent = String(current + 1);
+    labelText.textContent = slides[current].dataset.label;
+  }
+
+  carousel.querySelector('[data-carousel-prev]').addEventListener('click', () => showSlide(current - 1));
+  carousel.querySelector('[data-carousel-next]').addEventListener('click', () => showSlide(current + 1));
+  showSlide(0);
+});
+
 const shotDialog = document.getElementById('shot-dialog');
 const dialogImage = shotDialog.querySelector('img');
 const dialogCaption = document.getElementById('shot-caption');
