@@ -27,17 +27,27 @@ const fs = require('fs');
     const projectNames = [];
     const projectPageHeights = [];
     const projectShots = [];
+    const carouselCounts = [];
+    const carouselNavigation = [];
     const troubleshooting = [];
     for (const tab of await page.locator('.project-tab').all()) {
       await tab.click();
       projectNames.push(await page.locator('.project-detail:visible h3').textContent());
-      const shots = await page.locator('.project-detail:visible .project-shot').all();
-      for (const shot of shots) {
+      const carousel = page.locator('.project-detail:visible [data-carousel]');
+      const slideCount = await carousel.locator('.carousel-slide').count();
+      carouselCounts.push(slideCount);
+      projectShots.push(await carousel.locator('.carousel-slide img').evaluateAll((images) => images.every((image) => image.complete && image.naturalWidth > 0)));
+      const labels = [];
+      for (let index = 0; index < slideCount; index += 1) {
+        const shot = carousel.locator('.project-shot:visible');
+        labels.push(await carousel.locator('[data-carousel-label]').textContent());
         projectShots.push(await shot.locator('img').evaluate((image) => image.complete && image.naturalWidth > 0));
         await shot.click();
         projectShots.push(await page.locator('#shot-dialog').evaluate((dialog) => dialog.open));
         await page.locator('[data-close-dialog]').click();
+        await carousel.locator('[data-carousel-next]').click();
       }
+      carouselNavigation.push(new Set(labels).size === slideCount && await carousel.locator('[data-carousel-index]').textContent() === '1');
       const details = page.locator('.project-detail:visible .troubleshooting');
       await details.locator('summary').click();
       troubleshooting.push(await details.evaluate((item) => item.open));
@@ -68,7 +78,7 @@ const fs = require('fs');
       repositoryLinks: document.querySelectorAll('a[href^="https://github.com/"]').length,
       brandImages: document.querySelectorAll('.project-brand img').length,
     }));
-    result.viewports.push({ ...viewport, introVisible, visibleAfterClick, projectNames, projectPageHeights, projectShots, troubleshooting, keyboardSelected, hashSelected, ...metrics });
+    result.viewports.push({ ...viewport, introVisible, visibleAfterClick, projectNames, projectPageHeights, projectShots, carouselCounts, carouselNavigation, troubleshooting, keyboardSelected, hashSelected, ...metrics });
     await page.close();
   }
 
@@ -89,6 +99,7 @@ const fs = require('fs');
     !item.introVisible || !item.imagesLoaded || item.h1Count !== 1 || item.brandImages !== 4 ||
     item.keyboardSelected !== 'true' || item.hashSelected !== 'true' ||
     item.projectNames.join('|') !== '한페이지|FocusMate|On-Wear|DALTOORI' ||
+    item.carouselCounts.join('|') !== '3|4|5|3' || item.carouselNavigation.some((works) => !works) ||
     item.projectShots.some((loaded) => !loaded) || item.troubleshooting.some((opened) => !opened) ||
     (item.width >= 1000 && Math.max(...item.projectPageHeights) > item.height + 8)
   );
