@@ -31,11 +31,13 @@ const fs = require('fs');
     for (const tab of await page.locator('.project-tab').all()) {
       await tab.click();
       projectNames.push(await page.locator('.project-detail:visible h3').textContent());
-      const shot = page.locator('.project-detail:visible .project-shot');
-      projectShots.push(await shot.locator('img').evaluate((image) => image.complete && image.naturalWidth > 0));
-      await shot.click();
-      projectShots.push(await page.locator('#shot-dialog').evaluate((dialog) => dialog.open));
-      await page.locator('[data-close-dialog]').click();
+      const shots = await page.locator('.project-detail:visible .project-shot').all();
+      for (const shot of shots) {
+        projectShots.push(await shot.locator('img').evaluate((image) => image.complete && image.naturalWidth > 0));
+        await shot.click();
+        projectShots.push(await page.locator('#shot-dialog').evaluate((dialog) => dialog.open));
+        await page.locator('[data-close-dialog]').click();
+      }
       const details = page.locator('.project-detail:visible .troubleshooting');
       await details.locator('summary').click();
       troubleshooting.push(await details.evaluate((item) => item.open));
@@ -51,6 +53,11 @@ const fs = require('fs');
     await page.locator('#project-tab-hanpage').click();
     await page.waitForTimeout(400);
     await page.screenshot({ path: `docs/screenshots/T01-tabs-${viewport.name}.png`, fullPage: true });
+    if (viewport.name === '1366' || viewport.name === '390') {
+      await page.locator('#project-tab-daltoori').click();
+      await page.waitForTimeout(400);
+      await page.screenshot({ path: `docs/screenshots/T01-daltoori-${viewport.name}.png`, fullPage: true });
+    }
 
     const metrics = await page.evaluate(() => ({
       overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -59,6 +66,7 @@ const fs = require('fs');
       fonts: [...document.fonts].map((font) => ({ family: font.family, status: font.status })),
       h1Count: document.querySelectorAll('h1').length,
       repositoryLinks: document.querySelectorAll('a[href^="https://github.com/"]').length,
+      brandImages: document.querySelectorAll('.project-brand img').length,
     }));
     result.viewports.push({ ...viewport, introVisible, visibleAfterClick, projectNames, projectPageHeights, projectShots, troubleshooting, keyboardSelected, hashSelected, ...metrics });
     await page.close();
@@ -78,7 +86,7 @@ const fs = require('fs');
 
   const invalid = result.viewports.some((item) =>
     item.overflow !== 0 || item.visiblePanels !== 1 || item.visibleAfterClick !== 1 ||
-    !item.introVisible || !item.imagesLoaded || item.h1Count !== 1 ||
+    !item.introVisible || !item.imagesLoaded || item.h1Count !== 1 || item.brandImages !== 4 ||
     item.keyboardSelected !== 'true' || item.hashSelected !== 'true' ||
     item.projectNames.join('|') !== '한페이지|FocusMate|On-Wear|DALTOORI' ||
     item.projectShots.some((loaded) => !loaded) || item.troubleshooting.some((opened) => !opened) ||

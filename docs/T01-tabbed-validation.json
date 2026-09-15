@@ -26,6 +26,8 @@
         true,
         true,
         true,
+        true,
+        true,
         true
       ],
       "troubleshooting": [
@@ -50,7 +52,8 @@
         }
       ],
       "h1Count": 1,
-      "repositoryLinks": 8
+      "repositoryLinks": 8,
+      "brandImages": 4
     },
     {
       "width": 1920,
@@ -78,6 +81,8 @@
         true,
         true,
         true,
+        true,
+        true,
         true
       ],
       "troubleshooting": [
@@ -102,7 +107,8 @@
         }
       ],
       "h1Count": 1,
-      "repositoryLinks": 8
+      "repositoryLinks": 8,
+      "brandImages": 4
     },
     {
       "width": 390,
@@ -117,12 +123,14 @@
         "DALTOORI"
       ],
       "projectPageHeights": [
-        1045,
-        1075,
-        1075,
-        1115
+        1043,
+        1107,
+        1107,
+        1147
       ],
       "projectShots": [
+        true,
+        true,
         true,
         true,
         true,
@@ -154,7 +162,8 @@
         }
       ],
       "h1Count": 1,
-      "repositoryLinks": 8
+      "repositoryLinks": 8,
+      "brandImages": 4
     },
     {
       "width": 320,
@@ -169,12 +178,14 @@
         "DALTOORI"
       ],
       "projectPageHeights": [
-        1204,
-        1234,
-        1234,
-        1252
+        1202,
+        1266,
+        1266,
+        1284
       ],
       "projectShots": [
+        true,
+        true,
         true,
         true,
         true,
@@ -206,7 +217,8 @@
         }
       ],
       "h1Count": 1,
-      "repositoryLinks": 8
+      "repositoryLinks": 8,
+      "brandImages": 4
     }
   ],
   "consoleErrors": [],
