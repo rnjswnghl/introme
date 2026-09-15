@@ -72,6 +72,8 @@ function activateProject(tab) {
 projectTabs.forEach((tab) => tab.addEventListener('click', () => activateProject(tab)));
 bindArrowKeys(projectTabs, activateProject);
 
+const carouselStates = new Map();
+
 document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   const slides = [...carousel.querySelectorAll('.carousel-slide')];
   const indexText = carousel.querySelector('[data-carousel-index]');
@@ -90,23 +92,63 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
 
   carousel.querySelector('[data-carousel-prev]').addEventListener('click', () => showSlide(current - 1));
   carousel.querySelector('[data-carousel-next]').addEventListener('click', () => showSlide(current + 1));
+  carouselStates.set(carousel, {
+    slides,
+    showSlide,
+    get current() { return current; },
+  });
   showSlide(0);
 });
 
 const shotDialog = document.getElementById('shot-dialog');
-const dialogImage = shotDialog.querySelector('img');
+const dialogImage = shotDialog.querySelector('.dialog-stage img');
 const dialogCaption = document.getElementById('shot-caption');
-document.querySelectorAll('.project-shot').forEach((button) => {
+const dialogIndex = shotDialog.querySelector('[data-dialog-index]');
+const dialogTotal = shotDialog.querySelector('[data-dialog-total]');
+let activeCarousel = null;
+
+function showDialogSlide(index) {
+  if (!activeCarousel) return;
+  const state = carouselStates.get(activeCarousel);
+  state.showSlide(index);
+  const slide = state.slides[state.current];
+  const sourceImage = slide.querySelector('img');
+  dialogImage.src = slide.dataset.shot;
+  dialogImage.alt = sourceImage.alt;
+  dialogCaption.textContent = slide.dataset.caption;
+  dialogIndex.textContent = String(state.current + 1);
+  dialogTotal.textContent = String(state.slides.length);
+}
+
+document.querySelectorAll('[data-carousel] .project-shot').forEach((button) => {
   button.addEventListener('click', () => {
-    dialogImage.src = button.dataset.shot;
-    dialogImage.alt = button.dataset.caption;
-    dialogCaption.textContent = button.dataset.caption;
+    activeCarousel = button.closest('[data-carousel]');
+    const state = carouselStates.get(activeCarousel);
+    showDialogSlide(state.slides.indexOf(button));
     shotDialog.showModal();
   });
+});
+shotDialog.querySelector('[data-dialog-prev]').addEventListener('click', () => {
+  const state = carouselStates.get(activeCarousel);
+  showDialogSlide(state.current - 1);
+});
+shotDialog.querySelector('[data-dialog-next]').addEventListener('click', () => {
+  const state = carouselStates.get(activeCarousel);
+  showDialogSlide(state.current + 1);
 });
 shotDialog.querySelector('[data-close-dialog]').addEventListener('click', () => shotDialog.close());
 shotDialog.addEventListener('click', (event) => {
   if (event.target === shotDialog) shotDialog.close();
+});
+shotDialog.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowLeft') {
+    event.preventDefault();
+    shotDialog.querySelector('[data-dialog-prev]').click();
+  }
+  if (event.key === 'ArrowRight') {
+    event.preventDefault();
+    shotDialog.querySelector('[data-dialog-next]').click();
+  }
 });
 
 const motionToggle = document.getElementById('motion-toggle');

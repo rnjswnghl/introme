@@ -1,4 +1,9 @@
-const { chromium } = require('playwright');
+let chromium;
+try {
+  ({ chromium } = require('playwright'));
+} catch {
+  ({ chromium } = require('C:/Users/Admin/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
+}
 const fs = require('fs');
 
 (async () => {
@@ -29,6 +34,7 @@ const fs = require('fs');
     const projectShots = [];
     const carouselCounts = [];
     const carouselNavigation = [];
+    const dialogCarouselNavigation = [];
     const troubleshooting = [];
     for (const tab of await page.locator('.project-tab').all()) {
       await tab.click();
@@ -48,6 +54,19 @@ const fs = require('fs');
         await carousel.locator('[data-carousel-next]').click();
       }
       carouselNavigation.push(new Set(labels).size === slideCount && await carousel.locator('[data-carousel-index]').textContent() === '1');
+      const firstShot = carousel.locator('.project-shot:visible');
+      await firstShot.click();
+      const firstDialogSource = await page.locator('#shot-dialog img').getAttribute('src');
+      await page.locator('[data-dialog-next]').click();
+      const nextDialogSource = await page.locator('#shot-dialog img').getAttribute('src');
+      const inlineAdvanced = await carousel.locator('[data-carousel-index]').textContent() === '2';
+      await page.keyboard.press('ArrowLeft');
+      const keyboardReturned = await page.locator('#shot-dialog img').getAttribute('src') === firstDialogSource;
+      await page.locator('[data-dialog-prev]').click();
+      const wrappedToLast = await page.locator('[data-dialog-index]').textContent() === String(slideCount);
+      await page.locator('[data-dialog-next]').click();
+      await page.locator('[data-close-dialog]').click();
+      dialogCarouselNavigation.push(firstDialogSource !== nextDialogSource && inlineAdvanced && keyboardReturned && wrappedToLast);
       const details = page.locator('.project-detail:visible .troubleshooting');
       await details.locator('summary').click();
       troubleshooting.push(await details.evaluate((item) => item.open));
@@ -78,7 +97,7 @@ const fs = require('fs');
       repositoryLinks: document.querySelectorAll('a[href^="https://github.com/"]').length,
       brandImages: document.querySelectorAll('.project-brand img').length,
     }));
-    result.viewports.push({ ...viewport, introVisible, visibleAfterClick, projectNames, projectPageHeights, projectShots, carouselCounts, carouselNavigation, troubleshooting, keyboardSelected, hashSelected, ...metrics });
+    result.viewports.push({ ...viewport, introVisible, visibleAfterClick, projectNames, projectPageHeights, projectShots, carouselCounts, carouselNavigation, dialogCarouselNavigation, troubleshooting, keyboardSelected, hashSelected, ...metrics });
     await page.close();
   }
 
@@ -99,7 +118,8 @@ const fs = require('fs');
     !item.introVisible || !item.imagesLoaded || item.h1Count !== 1 || item.brandImages !== 4 ||
     item.keyboardSelected !== 'true' || item.hashSelected !== 'true' ||
     item.projectNames.join('|') !== '한페이지|FocusMate|On-Wear|DALTOORI' ||
-    item.carouselCounts.join('|') !== '3|4|5|3' || item.carouselNavigation.some((works) => !works) ||
+    item.carouselCounts.join('|') !== '10|8|7|4' || item.carouselNavigation.some((works) => !works) ||
+    item.dialogCarouselNavigation.some((works) => !works) ||
     item.projectShots.some((loaded) => !loaded) || item.troubleshooting.some((opened) => !opened) ||
     (item.width >= 1000 && Math.max(...item.projectPageHeights) > item.height + 8)
   );
