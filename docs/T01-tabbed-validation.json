@@ -5,6 +5,9 @@
       "height": 768,
       "name": "1366",
       "introVisible": true,
+      "userSelect": "none",
+      "evidenceCards": 3,
+      "evidenceNavigation": true,
       "visibleAfterClick": 1,
       "projectNames": [
         "한페이지",
@@ -130,6 +133,9 @@
       "height": 1080,
       "name": "1920",
       "introVisible": true,
+      "userSelect": "none",
+      "evidenceCards": 3,
+      "evidenceNavigation": true,
       "visibleAfterClick": 1,
       "projectNames": [
         "한페이지",
@@ -255,6 +261,9 @@
       "height": 844,
       "name": "390",
       "introVisible": true,
+      "userSelect": "none",
+      "evidenceCards": 3,
+      "evidenceNavigation": true,
       "visibleAfterClick": 1,
       "projectNames": [
         "한페이지",
@@ -380,6 +389,9 @@
       "height": 700,
       "name": "320",
       "introVisible": true,
+      "userSelect": "none",
+      "evidenceCards": 3,
+      "evidenceNavigation": true,
       "visibleAfterClick": 1,
       "projectNames": [
         "한페이지",

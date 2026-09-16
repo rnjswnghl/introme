@@ -27,6 +27,16 @@ const fs = require('fs');
     await page.goto('http://127.0.0.1:4173/#intro', { waitUntil: 'networkidle' });
 
     const introVisible = await page.locator('#panel-intro').isVisible();
+    const userSelect = await page.locator('body').evaluate((body) => getComputedStyle(body).userSelect);
+    const evidenceCards = await page.locator('[data-open-project]').count();
+    if (viewport.name === '1366' || viewport.name === '1920') {
+      await page.screenshot({ path: `docs/screenshots/T01-intro-${viewport.name}.png`, fullPage: true });
+    }
+    await page.locator('[data-open-project="onwear"]').click();
+    const evidenceNavigation =
+      await page.locator('#tab-projects').getAttribute('aria-selected') === 'true' &&
+      await page.locator('#project-tab-onwear').getAttribute('aria-selected') === 'true';
+    await page.goto('http://127.0.0.1:4173/#intro', { waitUntil: 'networkidle' });
     await page.locator('#tab-projects').click();
     const visibleAfterClick = await page.locator('.tab-panel:visible').count();
     const projectNames = [];
@@ -97,7 +107,7 @@ const fs = require('fs');
       repositoryLinks: document.querySelectorAll('a[href^="https://github.com/"]').length,
       brandImages: document.querySelectorAll('.project-brand img').length,
     }));
-    result.viewports.push({ ...viewport, introVisible, visibleAfterClick, projectNames, projectPageHeights, projectShots, carouselCounts, carouselNavigation, dialogCarouselNavigation, troubleshooting, keyboardSelected, hashSelected, ...metrics });
+    result.viewports.push({ ...viewport, introVisible, userSelect, evidenceCards, evidenceNavigation, visibleAfterClick, projectNames, projectPageHeights, projectShots, carouselCounts, carouselNavigation, dialogCarouselNavigation, troubleshooting, keyboardSelected, hashSelected, ...metrics });
     await page.close();
   }
 
@@ -115,7 +125,8 @@ const fs = require('fs');
 
   const invalid = result.viewports.some((item) =>
     item.overflow !== 0 || item.visiblePanels !== 1 || item.visibleAfterClick !== 1 ||
-    !item.introVisible || !item.imagesLoaded || item.h1Count !== 1 || item.brandImages !== 4 ||
+    !item.introVisible || item.userSelect !== 'none' || item.evidenceCards !== 3 || !item.evidenceNavigation ||
+    !item.imagesLoaded || item.h1Count !== 1 || item.brandImages !== 4 ||
     item.keyboardSelected !== 'true' || item.hashSelected !== 'true' ||
     item.projectNames.join('|') !== '한페이지|FocusMate|On-Wear|DALTOORI' ||
     item.carouselCounts.join('|') !== '10|8|7|4' || item.carouselNavigation.some((works) => !works) ||
