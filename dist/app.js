@@ -16,6 +16,7 @@ function activateFolder(route, updateHash = true) {
   });
 
   if (updateHash) history.pushState(null, '', `#${activeTab.dataset.route}`);
+  requestAnimationFrame(syncTopButton);
 }
 
 function bindArrowKeys(tabs, activate) {
@@ -181,6 +182,20 @@ motionToggle.addEventListener('click', () => {
 });
 reducedMotion.addEventListener('change', syncMotion);
 
+const toTopButton = document.getElementById('to-top');
+
+function syncTopButton() {
+  const pageCanScroll = document.documentElement.scrollHeight > window.innerHeight + 80;
+  toTopButton.hidden = !pageCanScroll || window.scrollY < 80;
+}
+
+window.addEventListener('scroll', syncTopButton, { passive: true });
+window.addEventListener('resize', syncTopButton);
+toTopButton.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+});
+
 projectPanels.slice(1).forEach((panel) => { panel.hidden = true; });
 activateFolder(location.hash.slice(1) || 'intro', false);
 syncMotion();
+syncTopButton();

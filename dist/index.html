@@ -127,7 +127,7 @@
             <details class="troubleshooting"><summary>트러블슈팅과 기술 선택</summary><div class="trouble-grid"><div><h4>음성 평가·응답 처리</h4><p>점수 추출 순서를 수정하고 Whisper 인식과 MFA 평가를 보완했습니다. 긴 분석 요청은 비동기로 전환했습니다.</p></div><div><h4>Whisper · MFA · MeloTTS · FastAPI</h4><p>음성 인식, 발음 구간 정렬, 비교용 표준 음성 생성, 분석 모델의 API 제공을 각각 분리해 구성했습니다.</p></div></div></details>
           </article>
         </div>
-        <dialog id="shot-dialog" class="shot-dialog" aria-labelledby="shot-caption"><button class="dialog-close" type="button" data-close-dialog aria-label="확대 이미지 닫기">닫기 ×</button><div class="dialog-stage"><button class="dialog-nav dialog-prev" type="button" data-dialog-prev aria-label="이전 Demo Image">←</button><img src="" alt=""><button class="dialog-nav dialog-next" type="button" data-dialog-next aria-label="다음 Demo Image">→</button></div><p id="shot-caption" aria-live="polite"></p><p class="dialog-count"><span data-dialog-index>1</span> / <span data-dialog-total>1</span></p></dialog>
+        <dialog id="shot-dialog" class="shot-dialog" aria-labelledby="shot-caption"><button class="dialog-close" type="button" data-close-dialog aria-label="확대 이미지 닫기">닫기 ×</button><div class="dialog-stage"><button class="dialog-nav dialog-prev" type="button" data-dialog-prev aria-label="이전 Demo Image">‹</button><img src="" alt=""><button class="dialog-nav dialog-next" type="button" data-dialog-next aria-label="다음 Demo Image">›</button></div><p id="shot-caption" aria-live="polite"></p><p class="dialog-count"><span data-dialog-index>1</span> / <span data-dialog-total>1</span></p></dialog>
       </section>
 
       <section id="panel-about" class="tab-panel about-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-about">
@@ -158,5 +158,6 @@
 
   <footer class="footer"><span>PROJECT ARCHIVE <span aria-hidden="true">©</span> 2026</span><span>FRONTEND DEVELOPER</span><a href="https://github.com/rnjswnghl">GitHub ↗</a></footer>
 </div>
+<button id="to-top" class="to-top" type="button" aria-label="페이지 맨 위로 이동" hidden><span aria-hidden="true">↑</span><small>TOP</small></button>
 </body>
 </html>
