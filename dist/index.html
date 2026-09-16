@@ -15,19 +15,30 @@
 <a class="skip" href="#portfolio">포트폴리오로 바로가기</a>
 <div class="shell">
   <header class="header">
-    <a class="wordmark" href="#intro" aria-label="권주회 포트폴리오 소개">
-      <span class="seal" aria-hidden="true">
-        <svg viewBox="0 0 52 52" focusable="false">
-          <path class="seal-frame" d="M14 4.5 38 4l9.5 9.5-.5 24L37.5 47l-24-.5L4 37V14z"/>
-          <path class="seal-frame seal-frame-inner" d="M16 8h20l8 8v20l-8 8H16l-8-8V16z"/>
-          <path class="seal-knot" d="M15 15h9v9h-9zm13 0h9v9h-9zM15 28h9v9h-9zm13 0h9v9h-9zM24 19h4v14h-4zM19 24h14v4H19z"/>
-          <text x="26" y="23">주</text><text x="26" y="37">회</text>
+    <a class="wordmark" href="#intro" aria-label="포트폴리오 홈">
+      <span class="lantern-mark" aria-hidden="true">
+        <svg viewBox="0 0 52 62" focusable="false">
+          <path class="lantern-line" d="M23 3h6M26 3v7M18 11h16l5 7-2 27-11 8-11-8-2-27zM13 18h26M15 45h22M26 53v5M22 58h8"/>
+          <path class="lantern-rib" d="M20 18l-1 27M32 18l1 27"/>
+          <path class="lantern-tassel" d="M26 58c-3 1-4 2-4 4m4-4c0 2 0 3 1 4m-1-4c3 1 4 2 4 4"/>
+          <text x="26" y="36">JH</text>
         </svg>
       </span>
-      <span>권주회 포트폴리오<span class="wordmark-en">JOOHOE KWON</span></span>
+      <span>프론트엔드 작업 기록<span class="wordmark-en">SELECTED WORKS</span></span>
     </a>
     <nav aria-label="주요 메뉴"><a href="#projects">프로젝트</a><a href="#about">소개</a><a href="https://github.com/rnjswnghl">GitHub <span aria-hidden="true">↗</span></a></nav>
   </header>
+
+  <div class="cloud-field" aria-hidden="true">
+    <svg class="cloud-cloud cloud-cloud-back" viewBox="0 0 1200 180" preserveAspectRatio="none">
+      <path d="M-30 72h170c25 0 25-29 51-29 20 0 25 16 39 22 10 5 23 7 44 7h153M56 104h262c38 0 35-23 72-23h136M748 44h88c35 0 36 28 66 28h268M656 112h139c24 0 31-20 56-20 24 0 30 20 56 20h325"/>
+      <path d="M154 72c13-19 26-28 43-28 16 0 25 8 33 21M836 72c9-17 22-25 38-25 15 0 24 8 28 25M350 81c9-14 20-20 34-20 15 0 25 7 31 20"/>
+    </svg>
+    <svg class="cloud-cloud cloud-cloud-front" viewBox="0 0 1200 180" preserveAspectRatio="none">
+      <path d="M-80 132h264c30 0 36-32 68-32 30 0 39 32 68 32h179M536 74h128c28 0 30-27 59-27 27 0 31 27 60 27h233M888 140h342"/>
+      <path d="M196 132c11-21 27-31 48-31 20 0 35 10 43 31M672 74c10-18 23-27 41-27 17 0 30 9 38 27"/>
+    </svg>
+  </div>
 
   <main id="portfolio" class="portfolio-stage" tabindex="-1">
     <div class="folio-heading">
@@ -43,21 +54,11 @@
     </div>
 
     <div class="archive-sheet">
-      <div class="cloud-field" aria-hidden="true">
-        <svg class="cloud-cloud cloud-cloud-back" viewBox="0 0 1200 180" preserveAspectRatio="none">
-          <path d="M-30 72h170c25 0 25-29 51-29 20 0 25 16 39 22 10 5 23 7 44 7h153M56 104h262c38 0 35-23 72-23h136M748 44h88c35 0 36 28 66 28h268M656 112h139c24 0 31-20 56-20 24 0 30 20 56 20h325"/>
-          <path d="M154 72c13-19 26-28 43-28 16 0 25 8 33 21M836 72c9-17 22-25 38-25 15 0 24 8 28 25M350 81c9-14 20-20 34-20 15 0 25 7 31 20"/>
-        </svg>
-        <svg class="cloud-cloud cloud-cloud-front" viewBox="0 0 1200 180" preserveAspectRatio="none">
-          <path d="M-80 132h264c30 0 36-32 68-32 30 0 39 32 68 32h179M536 74h128c28 0 30-27 59-27 27 0 31 27 60 27h233M888 140h342"/>
-          <path d="M196 132c11-21 27-31 48-31 20 0 35 10 43 31M672 74c10-18 23-27 41-27 17 0 30 9 38 27"/>
-        </svg>
-      </div>
       <section id="panel-intro" class="tab-panel intro-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-intro">
         <div class="hero-copy">
           <p class="eyebrow"><span aria-hidden="true"></span> FRONTEND DEVELOPER PORTFOLIO</p>
           <h1>사용자의 흐름을<br><em>끝까지 다듬는</em> 개발자.</h1>
-          <p class="intro">권주회입니다. React와 Vue로 웹 화면을 만들며 검색·필터·상태 관리·API 연동을 구현해 왔습니다. 프로젝트에 필요한 경우 Django와 FastAPI까지 개발 범위를 넓혔습니다.</p>
+          <p class="intro">React와 Vue로 웹 화면을 만들며 검색·필터·상태 관리·API 연동을 구현해 왔습니다. 프로젝트에 필요한 경우 Django와 FastAPI까지 개발 범위를 넓혔습니다.</p>
           <dl class="profile-notes">
             <div><dt>이름</dt><dd>권주회</dd></div>
             <div><dt>전공</dt><dd>러시아학 × 빅데이터학</dd></div>
@@ -138,7 +139,7 @@
     </div>
   </main>
 
-  <footer class="footer"><span>JOOHOE KWON <span aria-hidden="true">©</span> 2026</span><span>Frontend Developer Portfolio</span><a href="https://github.com/rnjswnghl">GitHub ↗</a></footer>
+  <footer class="footer"><span>SELECTED WORKS <span aria-hidden="true">©</span> 2026</span><span>WEB · UI · API</span><a href="https://github.com/rnjswnghl">GitHub ↗</a></footer>
 </div>
 </body>
 </html>
