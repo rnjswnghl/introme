@@ -71,6 +71,15 @@ function activateProject(tab) {
 
 projectTabs.forEach((tab) => tab.addEventListener('click', () => activateProject(tab)));
 bindArrowKeys(projectTabs, activateProject);
+document.querySelectorAll('[data-open-project]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const target = document.getElementById(`project-tab-${button.dataset.openProject}`);
+    if (!target) return;
+    activateFolder('projects');
+    activateProject(target);
+    target.focus();
+  });
+});
 
 const carouselStates = new Map();
 
