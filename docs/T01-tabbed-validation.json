@@ -103,6 +103,12 @@
         true,
         true
       ],
+      "dialogControlsOverlay": [
+        true,
+        true,
+        true,
+        true
+      ],
       "troubleshooting": [
         true,
         true,
@@ -111,6 +117,8 @@
       ],
       "keyboardSelected": "true",
       "hashSelected": "true",
+      "topButtonHiddenAtTop": true,
+      "topButtonWorks": true,
       "overflow": 0,
       "visiblePanels": 1,
       "imagesLoaded": true,
@@ -126,7 +134,8 @@
       ],
       "h1Count": 1,
       "repositoryLinks": 8,
-      "brandImages": 4
+      "brandImages": 4,
+      "catVisible": true
     },
     {
       "width": 1920,
@@ -231,6 +240,12 @@
         true,
         true
       ],
+      "dialogControlsOverlay": [
+        true,
+        true,
+        true,
+        true
+      ],
       "troubleshooting": [
         true,
         true,
@@ -239,6 +254,8 @@
       ],
       "keyboardSelected": "true",
       "hashSelected": "true",
+      "topButtonHiddenAtTop": true,
+      "topButtonWorks": true,
       "overflow": 0,
       "visiblePanels": 1,
       "imagesLoaded": true,
@@ -254,7 +271,8 @@
       ],
       "h1Count": 1,
       "repositoryLinks": 8,
-      "brandImages": 4
+      "brandImages": 4,
+      "catVisible": true
     },
     {
       "width": 390,
@@ -359,6 +377,12 @@
         true,
         true
       ],
+      "dialogControlsOverlay": [
+        true,
+        true,
+        true,
+        true
+      ],
       "troubleshooting": [
         true,
         true,
@@ -367,6 +391,8 @@
       ],
       "keyboardSelected": "true",
       "hashSelected": "true",
+      "topButtonHiddenAtTop": true,
+      "topButtonWorks": true,
       "overflow": 0,
       "visiblePanels": 1,
       "imagesLoaded": true,
@@ -382,7 +408,8 @@
       ],
       "h1Count": 1,
       "repositoryLinks": 8,
-      "brandImages": 4
+      "brandImages": 4,
+      "catVisible": true
     },
     {
       "width": 320,
@@ -487,6 +514,12 @@
         true,
         true
       ],
+      "dialogControlsOverlay": [
+        true,
+        true,
+        true,
+        true
+      ],
       "troubleshooting": [
         true,
         true,
@@ -495,6 +528,8 @@
       ],
       "keyboardSelected": "true",
       "hashSelected": "true",
+      "topButtonHiddenAtTop": true,
+      "topButtonWorks": true,
       "overflow": 0,
       "visiblePanels": 1,
       "imagesLoaded": true,
@@ -510,7 +545,8 @@
       ],
       "h1Count": 1,
       "repositoryLinks": 8,
-      "brandImages": 4
+      "brandImages": 4,
+      "catVisible": true
     }
   ],
   "consoleErrors": [],

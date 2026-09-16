@@ -45,6 +45,7 @@ const fs = require('fs');
     const carouselCounts = [];
     const carouselNavigation = [];
     const dialogCarouselNavigation = [];
+    const dialogControlsOverlay = [];
     const troubleshooting = [];
     for (const tab of await page.locator('.project-tab').all()) {
       await tab.click();
@@ -66,6 +67,14 @@ const fs = require('fs');
       carouselNavigation.push(new Set(labels).size === slideCount && await carousel.locator('[data-carousel-index]').textContent() === '1');
       const firstShot = carousel.locator('.project-shot:visible');
       await firstShot.click();
+      const dialogImageBox = await page.locator('#shot-dialog img').boundingBox();
+      const dialogPrevBox = await page.locator('[data-dialog-prev]').boundingBox();
+      const dialogNextBox = await page.locator('[data-dialog-next]').boundingBox();
+      dialogControlsOverlay.push(Boolean(
+        dialogImageBox && dialogPrevBox && dialogNextBox &&
+        dialogPrevBox.x >= dialogImageBox.x &&
+        dialogNextBox.x + dialogNextBox.width <= dialogImageBox.x + dialogImageBox.width
+      ));
       const firstDialogSource = await page.locator('#shot-dialog img').getAttribute('src');
       await page.locator('[data-dialog-next]').click();
       const nextDialogSource = await page.locator('#shot-dialog img').getAttribute('src');
@@ -98,6 +107,19 @@ const fs = require('fs');
       await page.screenshot({ path: `docs/screenshots/T01-daltoori-${viewport.name}.png`, fullPage: true });
     }
 
+    await page.evaluate(() => window.scrollTo(0, 0));
+    const topButtonHiddenAtTop = await page.locator('#to-top').isHidden();
+    let topButtonWorks = true;
+    if (viewport.width <= 700) {
+      await page.locator('#project-tab-hanpage').click();
+      await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+      await page.waitForTimeout(300);
+      const topButtonVisible = await page.locator('#to-top').isVisible();
+      await page.locator('#to-top').click();
+      await page.waitForTimeout(900);
+      topButtonWorks = topButtonVisible && await page.evaluate(() => window.scrollY < 5);
+    }
+
     const metrics = await page.evaluate(() => ({
       overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
       visiblePanels: [...document.querySelectorAll('.tab-panel')].filter((panel) => !panel.hidden).length,
@@ -106,8 +128,9 @@ const fs = require('fs');
       h1Count: document.querySelectorAll('h1').length,
       repositoryLinks: document.querySelectorAll('a[href^="https://github.com/"]').length,
       brandImages: document.querySelectorAll('.project-brand img').length,
+      catVisible: getComputedStyle(document.querySelector('.ink-cat')).display !== 'none',
     }));
-    result.viewports.push({ ...viewport, introVisible, userSelect, evidenceCards, evidenceNavigation, visibleAfterClick, projectNames, projectPageHeights, projectShots, carouselCounts, carouselNavigation, dialogCarouselNavigation, troubleshooting, keyboardSelected, hashSelected, ...metrics });
+    result.viewports.push({ ...viewport, introVisible, userSelect, evidenceCards, evidenceNavigation, visibleAfterClick, projectNames, projectPageHeights, projectShots, carouselCounts, carouselNavigation, dialogCarouselNavigation, dialogControlsOverlay, troubleshooting, keyboardSelected, hashSelected, topButtonHiddenAtTop, topButtonWorks, ...metrics });
     await page.close();
   }
 
@@ -131,6 +154,8 @@ const fs = require('fs');
     item.projectNames.join('|') !== '한페이지|FocusMate|On-Wear|DALTOORI' ||
     item.carouselCounts.join('|') !== '10|8|7|4' || item.carouselNavigation.some((works) => !works) ||
     item.dialogCarouselNavigation.some((works) => !works) ||
+    item.dialogControlsOverlay.some((works) => !works) || !item.catVisible ||
+    !item.topButtonHiddenAtTop || !item.topButtonWorks ||
     item.projectShots.some((loaded) => !loaded) || item.troubleshooting.some((opened) => !opened) ||
     (item.width >= 1000 && Math.max(...item.projectPageHeights) > item.height + 8)
   );
