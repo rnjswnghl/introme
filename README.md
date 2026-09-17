@@ -19,7 +19,7 @@
 
 ## 완성된 페이지
 - [공개 자기소개](https://intro.rnjswnghl.chatgpt.site/)
-- [배포한 소스 전체 커밋](https://github.com/rnjswnghl/introme/commit/9401440df1c97e20788a43223f91b87944dde26b)
+- [배포한 소스 전체 커밋](https://github.com/rnjswnghl/introme/commit/d3e3cdd9495e5c64d159ebb7f050ad2ecc2afdfe)
 - [제출 준비와 확인 방법](docs/T01-submission.md)
 - [공개 환경 검증](docs/T01-public-validation.json)
 
