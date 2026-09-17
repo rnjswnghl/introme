@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
+  <g transform="rotate(7 32 28)" fill="none" stroke="#934631" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-width="1.8" d="M29 2h7M32.5 2v7M23 10h19l5 7-3 27-11.5 8L21 44l-3-27zM18 17h29M21 44h23"/>
+    <path stroke-width="1.1" opacity=".65" d="M26 17l-1 27M39 17l1 27"/>
+    <g fill="#934631" stroke="none" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">
+      <text x="32.5" y="29">J</text>
+      <text x="32.5" y="40">H</text>
+    </g>
+    <path stroke-width="1.25" d="M32.5 52c-2 4-8 6-13 7-5 2-10 5-13 10M35 52c-1 5-6 9-11 12-4 2-7 5-8 7M29 52c-3 3-9 4-14 4"/>
+  </g>
+</svg>
