@@ -18,3 +18,12 @@
 - 최종 공개 주소: https://intro.rnjswnghl.chatgpt.site/
 - Sites 응답: `slug_change.status=complete`, `slug=intro`, 저장 버전 15 유지.
 - 최종 루트 주소 GET 응답 200 및 HTML의 `panel-intro` 확인.
+
+## 공개 화면 검증과 Notion 기록 보완
+
+- 2026-09-17 10:51 KST, 새 공개 주소를 로그인 없는 Chrome 컨텍스트로 열었다.
+- 1366×768, 1920×1080, 390×844에서 HTTP 200, 기본 홈 표시, 클릭·Enter·Space 탭 전환 통과. 가로 넘침·콘솔 오류·실패 요청 모두 0.
+- `T01-deployment-2026-09-17-validation.json`에 결과를 저장했다. 이번에는 대비 수치를 다시 측정하지 않았다.
+- `screenshots/T01-deployment-2026-09-17-1366.png`, `-1920.png`, `-390.png`, `-interaction.png`에 홈 화면과 키보드 전환 결과를 새로 캡처했다. 이전 주소 시점 화면을 재현한 캡처가 아니다.
+- 기록 대상: Aleph_work → T01 (`3d777405-36fc-81b7-9fdb-ea1f7ca2f121`). 주소 변경 과정·최종 결정·검증 결과와 캡처를 누적한다.
+- AGENTS.md에 검증·캡처·Notion 업로드까지 완료 기준으로 명시했다.
