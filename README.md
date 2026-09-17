@@ -18,7 +18,7 @@
 새 과제는 Notion Aleph_work 아래 과제 번호별 하위 페이지로 정리합니다. 목표, 판단, 구현, 실제 결함 수정, 화면 캡처, 제출 정보를 기록합니다. 이전 과제의 기록은 보존합니다.
 
 ## 완성된 페이지
-- [공개 자기소개](https://rnjswnghl-intro.rnjswnghl.chatgpt.site/)
+- [공개 자기소개](https://intro.rnjswnghl.chatgpt.site/)
 - [배포한 소스 전체 커밋](https://github.com/rnjswnghl/introme/commit/9401440df1c97e20788a43223f91b87944dde26b)
 - [제출 준비와 확인 방법](docs/T01-submission.md)
 - [공개 환경 검증](docs/T01-public-validation.json)
