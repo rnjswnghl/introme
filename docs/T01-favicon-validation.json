@@ -1,0 +1,45 @@
+{
+  "viewports": [
+    {
+      "width": 1366,
+      "height": 768,
+      "name": "1366",
+      "title": "Intro_J",
+      "icon": "assets/favicon.svg",
+      "iconStatus": 200,
+      "iconType": "image/svg+xml",
+      "noHorizontalOverflow": true,
+      "clickWorks": true,
+      "enterWorks": true,
+      "spaceWorks": true
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "name": "1920",
+      "title": "Intro_J",
+      "icon": "assets/favicon.svg",
+      "iconStatus": 200,
+      "iconType": "image/svg+xml",
+      "noHorizontalOverflow": true,
+      "clickWorks": true,
+      "enterWorks": true,
+      "spaceWorks": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "390",
+      "title": "Intro_J",
+      "icon": "assets/favicon.svg",
+      "iconStatus": 200,
+      "iconType": "image/svg+xml",
+      "noHorizontalOverflow": true,
+      "clickWorks": true,
+      "enterWorks": true,
+      "spaceWorks": true
+    }
+  ],
+  "consoleErrors": [],
+  "failedRequests": []
+}
