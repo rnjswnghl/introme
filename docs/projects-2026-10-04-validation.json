@@ -1,0 +1,66 @@
+{
+  "url": "http://127.0.0.1:4173/",
+  "viewports": [
+    {
+      "width": 1366,
+      "height": 768,
+      "projectCount": 6,
+      "overflow": false,
+      "clickEnterSpace": true,
+      "arrowNavigation": true,
+      "dialog": true,
+      "links": true,
+      "colors": {
+        "ink": "#292820",
+        "muted": "#6b6053",
+        "paper": "#f3eee3"
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "projectCount": 6,
+      "overflow": false,
+      "clickEnterSpace": true,
+      "arrowNavigation": true,
+      "dialog": true,
+      "links": true,
+      "colors": {
+        "ink": "#292820",
+        "muted": "#6b6053",
+        "paper": "#f3eee3"
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "projectCount": 6,
+      "overflow": false,
+      "clickEnterSpace": true,
+      "arrowNavigation": true,
+      "dialog": true,
+      "links": true,
+      "colors": {
+        "ink": "#292820",
+        "muted": "#6b6053",
+        "paper": "#f3eee3"
+      }
+    },
+    {
+      "width": 320,
+      "height": 700,
+      "projectCount": 6,
+      "overflow": false,
+      "clickEnterSpace": true,
+      "arrowNavigation": true,
+      "dialog": true,
+      "links": true,
+      "colors": {
+        "ink": "#292820",
+        "muted": "#6b6053",
+        "paper": "#f3eee3"
+      }
+    }
+  ],
+  "errors": []
+}
