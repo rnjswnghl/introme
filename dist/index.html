@@ -93,13 +93,17 @@
       </section>
 
       <section id="panel-projects" class="tab-panel projects-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-projects">
-        <header class="panel-heading"><div><p class="eyebrow">PROJECTS · 4</p><h2>주요 프로젝트</h2></div><p>프로젝트별 역할과 구현 내용을 정리했습니다.</p></header>
+        <header class="panel-heading"><div><p class="eyebrow">PROJECTS · 6</p><h2>주요 프로젝트</h2></div><p>프로젝트별 역할과 구현 내용을 정리했습니다.</p></header>
         <div class="project-browser">
           <div class="project-tabs" role="tablist" aria-label="프로젝트 선택" aria-orientation="vertical">
             <button id="project-tab-hanpage" class="project-tab" type="button" role="tab" aria-selected="true" aria-controls="project-hanpage"><span>01</span><strong>한페이지</strong><small>Full-stack</small></button>
             <button id="project-tab-focusmate" class="project-tab" type="button" role="tab" aria-selected="false" aria-controls="project-focusmate" tabindex="-1"><span>02</span><strong>FocusMate</strong><small>Frontend</small></button>
             <button id="project-tab-onwear" class="project-tab" type="button" role="tab" aria-selected="false" aria-controls="project-onwear" tabindex="-1"><span>03</span><strong>On-Wear</strong><small>Frontend</small></button>
             <button id="project-tab-daltoori" class="project-tab" type="button" role="tab" aria-selected="false" aria-controls="project-daltoori" tabindex="-1"><span>04</span><strong>DALTOORI</strong><small>Backend · AI</small></button>
+
+            <button id="project-tab-burnit" class="project-tab" type="button" role="tab" aria-selected="false" aria-controls="project-burnit" tabindex="-1"><span>05</span><strong>BurnIt</strong><small>Web · Interactive</small></button>
+
+            <button id="project-tab-cutandnote" class="project-tab" type="button" role="tab" aria-selected="false" aria-controls="project-cutandnote" tabindex="-1"><span>06</span><strong>Cut&amp;Note</strong><small>Web · Interactive</small></button>
           </div>
 
           <article id="project-hanpage" class="project-detail" role="tabpanel" tabindex="0" aria-labelledby="project-tab-hanpage">
@@ -126,6 +130,18 @@
             <details class="demo-flow"><summary>기능 흐름 GIF 보기</summary><div class="demo-flow-grid"><figure><img src="assets/projects/daltoori-script.gif" alt="DALTOORI 스크립트 선택과 학습 진행 흐름"><figcaption>스크립트 선택과 학습 진행</figcaption></figure><figure><img src="assets/projects/daltoori-feedback.gif" alt="DALTOORI 종합 발음 피드백 확인 흐름"><figcaption>종합 발음 피드백</figcaption></figure></div></details>
             <details class="troubleshooting"><summary>트러블슈팅과 기술 선택</summary><div class="trouble-grid"><div><h4>음성 평가·응답 처리</h4><p>점수 추출 순서를 수정하고 Whisper 인식과 MFA 평가를 보완했습니다. 긴 분석 요청은 비동기로 전환했습니다.</p></div><div><h4>Whisper · MFA · MeloTTS · FastAPI</h4><p>음성 인식, 발음 구간 정렬, 비교용 표준 음성 생성, 분석 모델의 API 제공을 각각 분리해 구성했습니다.</p></div></div></details>
           </article>
+
+          <article id="project-burnit" class="project-detail" role="tabpanel" tabindex="0" aria-labelledby="project-tab-burnit">
+            <div class="project-title"><div><p>2026.09 · 웹 프로젝트</p><h3>BurnIt</h3></div><span>Web · Interactive</span></div>
+            <div class="project-overview"><div><p class="project-lead">글과 이미지를 종이 위에 담고 불꽃으로 태워 보내는 인터랙티브 웹 서비스입니다.</p><div class="project-facts"><div><h4>주요 기능</h4><p>성냥·라이터·잉걸불 등 소각 도구, 자유 필기와 이미지 업로드, 소각 스튜디오와 30초 게임을 제공합니다.</p></div><div><h4>주요 구현</h4><p>Canvas에 종이의 연소·그을음·입자를 그리며 포인터 입력과 도구별 반응, PNG 저장을 연결합니다.</p></div></div><p class="stack">React · TypeScript · Vite · Canvas API · Web Audio API</p><div class="project-links"><a href="https://burnit.rnjswnghl.chatgpt.site/">서비스 바로가기 ↗</a><a href="https://github.com/rnjswnghl/burn_it">GitHub Repository ↗</a></div></div><div class="project-carousel" data-carousel><div class="carousel-slides"><button class="project-shot carousel-slide" type="button" data-shot="assets/projects/burnit-main.webp" data-caption="BurnIt 실행 화면" data-label="메인"><img src="assets/projects/burnit-main.webp" alt="BurnIt 소각 스튜디오의 나비 스케치와 소각 도구 선택 화면" width="1366" height="768"><span>Demo Image · 확대</span></button></div><div class="carousel-controls"><button type="button" data-carousel-prev aria-label="BurnIt 이전 Demo Image">←</button><p aria-live="polite"><span data-carousel-index>1</span> / 1 · <span data-carousel-label>메인</span></p><button type="button" data-carousel-next aria-label="BurnIt 다음 Demo Image">→</button></div></div></div>
+            <details class="troubleshooting"><summary>기술 선택과 구현 방식</summary><div class="trouble-grid"><div><h4>Canvas · React</h4><p>연소와 입자는 Canvas 렌더링 루프에서 처리하고, 도구·템플릿·게임 모드의 UI 상태는 React로 관리합니다.</p></div></div></details>
+          </article>
+
+          <article id="project-cutandnote" class="project-detail" role="tabpanel" tabindex="0" aria-labelledby="project-tab-cutandnote">
+            <div class="project-title"><div><p>2026.09 — 10 · 웹 프로젝트</p><h3>Cut&amp;Note</h3></div><span>Web · Interactive</span></div>
+            <div class="project-overview"><div><p class="project-lead">사진과 문구, 프레임과 스티커를 조합해 나만의 이미지로 저장하는 브라우저 기반 편집기입니다.</p><div class="project-facts"><div><h4>주요 기능</h4><p>최대 4장의 사진, 다중 텍스트와 스티커를 자유 배치하고 프레임·비율·배경색을 조절합니다.</p></div><div><h4>주요 구현</h4><p>레이어 이동·크기·회전, 실행 취소·다시 실행, 자동 저장과 JSON 백업·복원, PNG·JPEG·PDF 내보내기를 제공합니다.</p></div></div><p class="stack">JavaScript · HTML · CSS · Canvas API · LocalStorage</p><div class="project-links"><a href="https://cutandnote.rnjswnghl.chatgpt.site/">서비스 바로가기 ↗</a><a href="https://github.com/rnjswnghl/studio">GitHub Repository ↗</a></div></div><div class="project-carousel" data-carousel><div class="carousel-slides"><button class="project-shot carousel-slide" type="button" data-shot="assets/projects/cutandnote-main.webp" data-caption="Cut&amp;Note 실행 화면" data-label="메인"><img src="assets/projects/cutandnote-main.webp" alt="Cut&Note의 사진·텍스트 도구, 캔버스와 템플릿·스티커 패널 화면" width="1366" height="768"><span>Demo Image · 확대</span></button></div><div class="carousel-controls"><button type="button" data-carousel-prev aria-label="Cut&amp;Note 이전 Demo Image">←</button><p aria-live="polite"><span data-carousel-index>1</span> / 1 · <span data-carousel-label>메인</span></p><button type="button" data-carousel-next aria-label="Cut&amp;Note 다음 Demo Image">→</button></div></div></div>
+            <details class="troubleshooting"><summary>기술 선택과 구현 방식</summary><div class="trouble-grid"><div><h4>Canvas · 로컬 저장</h4><p>사진 처리는 브라우저 Canvas 안에서 수행합니다. 자동 저장과 JSON 백업으로 편집 상태와 사진 원본을 보관하고 다시 열 수 있습니다.</p></div></div></details>
+          </article>
         </div>
         <dialog id="shot-dialog" class="shot-dialog" aria-labelledby="shot-caption"><button class="dialog-close" type="button" data-close-dialog aria-label="확대 이미지 닫기">닫기 ×</button><div class="dialog-stage"><button class="dialog-nav dialog-prev" type="button" data-dialog-prev aria-label="이전 Demo Image">‹</button><img src="" alt=""><button class="dialog-nav dialog-next" type="button" data-dialog-next aria-label="다음 Demo Image">›</button></div><p id="shot-caption" aria-live="polite"></p><p class="dialog-count"><span data-dialog-index>1</span> / <span data-dialog-total>1</span></p></dialog>
       </section>
@@ -151,6 +167,8 @@
           <a href="https://github.com/rnjswnghl/rnjswnghl--gongtong_frontend"><span>01</span><strong>FocusMate</strong><small>Frontend Repository</small><b>GitHub ↗</b></a>
           <a href="https://github.com/On-Wear-SSAFY-13/On-Wear-FE"><span>02</span><strong>On-Wear</strong><small>Frontend Repository</small><b>GitHub ↗</b></a>
           <a href="https://github.com/DALTOORI-SSAFY-13/e101"><span>03</span><strong>DALTOORI</strong><small>Project Repository</small><b>GitHub ↗</b></a>
+          <a href="https://github.com/rnjswnghl/burn_it"><span>04</span><strong>BurnIt</strong><small>Project Repository</small><b>GitHub ↗</b></a>
+          <a href="https://github.com/rnjswnghl/studio"><span>05</span><strong>Cut&amp;Note</strong><small>Project Repository</small><b>GitHub ↗</b></a>
         </div>
       </section>
     </div>
