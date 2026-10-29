@@ -23,6 +23,12 @@
 - [제출 준비와 확인 방법](docs/T01-submission.md)
 - [공개 환경 검증](docs/T01-public-validation.json)
 
+## T08 · 패스키 비공개 서랍
+1번 페이지에 04 비공개 탭을 이어 붙이고, 비밀번호 없이 패스키로만 열리게 했습니다. 브랜치 `t08-passkey`, 공개 주소 https://introme-t08.vercel.app (Vercel, Neon Postgres).
+- 실행: `npm install && npm run dev` → http://localhost:4180 (메모리 PGlite 자동 실행)
+- 설명서: [docs/T08-passkey.md](docs/T08-passkey.md) · 제출 준비: [docs/T08-submission.md](docs/T08-submission.md)
+- 검증: `node scripts/t08-passkey-check.mjs [주소]`, `node scripts/t08-browser-check.cjs [주소]`
+
 ## 디자인 작업 기준
 [design.md](design.md)를 먼저 읽고 폰트·색상·레이아웃과 레퍼런스 선택을 결정합니다. [AGENTS.md](AGENTS.md)에 다음 작업에서도 해당 문서를 읽도록 연결했습니다.
 선택한 디자인 분석과 라이선스는 docs/design-references/에 보관합니다. 2026-09-11 기준 파일·스킬 기반 작업 방식을 설정했으며, 공개 v1 화면의 폰트 교체나 재배포를 뜻하지 않습니다.
