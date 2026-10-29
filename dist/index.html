@@ -10,6 +10,8 @@
   <link rel="preload" href="assets/fonts/NanumMyeongjo-Regular.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
+  <script src="vendor/simplewebauthn-browser-13.3.0.umd.min.js" defer></script>
+  <script src="private.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#portfolio">포트폴리오로 바로가기</a>
@@ -29,7 +31,7 @@
       </span>
       <span>작업 기록<span class="wordmark-en">FRONTEND DEVELOPMENT</span></span>
     </a>
-    <nav aria-label="주요 메뉴"><a href="#projects">프로젝트</a><a href="#about">소개</a><a href="https://github.com/rnjswnghl">GitHub <span aria-hidden="true">↗</span></a></nav>
+    <nav aria-label="주요 메뉴"><a href="#projects">프로젝트</a><a href="#about">소개</a><a href="#private" class="nav-private">비공개 서랍</a><a href="https://github.com/rnjswnghl">GitHub <span aria-hidden="true">↗</span></a></nav>
   </header>
 
   <div class="cloud-field" aria-hidden="true">
@@ -54,6 +56,7 @@
       <button id="tab-projects" class="folder-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-projects" data-route="projects" tabindex="-1"><span>01</span>프로젝트</button>
       <button id="tab-about" class="folder-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-about" data-route="about" tabindex="-1"><span>02</span>소개</button>
       <button id="tab-records" class="folder-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-records" data-route="records" tabindex="-1"><span>03</span>링크</button>
+      <button id="tab-private" class="folder-tab folder-tab-private" type="button" role="tab" aria-selected="false" aria-controls="panel-private" data-route="private" tabindex="-1"><svg class="lock-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2M3 7h10v7H3z"/></svg><span>04</span>비공개</button>
     </div>
 
     <div class="archive-sheet">
@@ -170,6 +173,64 @@
           <a href="https://github.com/rnjswnghl/burn_it"><span>04</span><strong>BurnIt</strong><small>Project Repository</small><b>GitHub ↗</b></a>
           <a href="https://github.com/rnjswnghl/studio"><span>05</span><strong>Cut&amp;Note</strong><small>Project Repository</small><b>GitHub ↗</b></a>
         </div>
+      </section>
+
+      <section id="panel-private" class="tab-panel private-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-private">
+        <div class="private-boundary">
+          <span class="boundary-seal" aria-hidden="true">秘</span>
+          <p><strong>여기부터 비공개 영역입니다.</strong> 00~03은 누구나 보는 공개 기록이고, 이 서랍은 패스키로 들어온 사람에게만 열립니다. 서랍 내용은 페이지에 들어 있지 않고, 서버가 확인한 뒤에만 내려 줍니다.</p>
+        </div>
+        <p class="private-status" role="status" aria-live="polite" data-private-status></p>
+
+        <div class="private-view" data-auth-view="out">
+          <header class="panel-heading"><div><p class="eyebrow">PRIVATE DRAWER</p><h2>비공개 서랍</h2></div><p>비밀번호는 만들지 않습니다. 기기가 만든 열쇠(패스키)로만 엽니다.</p></header>
+          <div class="private-grid">
+            <div class="sealed-list" aria-label="잠긴 서랍 칸">
+              <article><span>壹</span><div><h3>준비 중인 프로젝트 메모</h3><p>봉인됨</p></div></article>
+              <article><span>貳</span><div><h3>지원하려는 곳 목록</h3><p>봉인됨</p></div></article>
+              <article><span>參</span><div><h3>스스로 쓰는 회고</h3><p>봉인됨</p></div></article>
+            </div>
+            <div class="auth-forms">
+              <form class="auth-card" data-login-form>
+                <h3>패스키로 들어가기</h3>
+                <label>이름표 <small>(선택 — 비우면 기기에 저장된 패스키 목록이 뜹니다)</small><input name="username" autocomplete="username webauthn" inputmode="latin" spellcheck="false" maxlength="20" placeholder="예: jh-archive"></label>
+                <button class="seal-button" type="submit"><svg class="lock-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2M3 7h10v7H3z"/></svg>패스키로 열기</button>
+              </form>
+              <form class="auth-card" data-register-form>
+                <h3>처음이면, 이름표와 패스키 만들기</h3>
+                <label>이름표 <small>(영문 소문자·숫자·-·_ 3~20자, 실명 대신 별명)</small><input name="username" required pattern="[a-z0-9][a-z0-9_\-]{2,19}" spellcheck="false" maxlength="20" placeholder="예: jh-archive"></label>
+                <label>이 패스키의 이름 <small>(나중에 목록에서 알아볼 이름)</small><input name="name" maxlength="40" placeholder="예: 노트북 Chrome"></label>
+                <button class="text-button" type="submit">이름표 만들고 패스키 등록</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="private-view" data-auth-view="in" hidden>
+          <header class="panel-heading"><div><p class="eyebrow">PRIVATE DRAWER · OPEN</p><h2><span data-owner></span>의 서랍</h2></div><button class="text-button" type="button" data-logout>서랍 닫고 나가기</button></header>
+          <div class="private-grid private-grid-open">
+            <section aria-labelledby="notes-title">
+              <h3 id="notes-title" class="private-subtitle">서랍 속 기록 <small data-note-count></small></h3>
+              <ul class="note-list" data-notes></ul>
+              <form class="note-form" data-note-form>
+                <label>제목<input name="title" required maxlength="60" placeholder="예: 다음 주 할 일"></label>
+                <label>내용<textarea name="body" required maxlength="500" rows="2" placeholder="실제 연락처·신분증 번호 같은 개인정보는 적지 마세요."></textarea></label>
+                <button class="text-button" type="submit">기록 넣기</button>
+              </form>
+            </section>
+            <section aria-labelledby="passkeys-title">
+              <h3 id="passkeys-title" class="private-subtitle">등록한 패스키 <small data-passkey-count></small></h3>
+              <ul class="passkey-list" data-passkeys></ul>
+              <form class="note-form" data-add-passkey-form>
+                <label>새 패스키 이름<input name="name" maxlength="40" placeholder="예: 휴대폰 Chrome"></label>
+                <button class="text-button" type="submit">패스키 하나 더 등록</button>
+              </form>
+              <p class="private-hint">기기를 잃어버려도 들어올 수 있게 두 개 이상 두세요. 마지막 남은 하나는 지울 수 없습니다.</p>
+            </section>
+          </div>
+        </div>
+
+        <noscript><p class="private-status">패스키 확인에는 JavaScript가 필요합니다. 서랍 내용은 로그인 뒤 서버에서만 내려옵니다.</p></noscript>
       </section>
     </div>
   </main>
