@@ -9,10 +9,16 @@
   const views = { out: $('[data-auth-view="out"]'), in: $('[data-auth-view="in"]') };
   let started = false;
 
+  // 상태 문장은 위쪽 공용 줄과, 방금 누른 폼 바로 아래에 함께 보여 준다(누른 자리에서 결과가 보이게).
+  let activeForm = null;
   const say = (text, tone = 'info') => {
     status.textContent = text;
     status.dataset.tone = tone;
-    if (tone !== 'info') status.scrollIntoView({ block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    panel.querySelectorAll('.form-status').forEach((el) => {
+      const own = el.closest('form') === activeForm;
+      el.textContent = own ? text : '';
+      el.dataset.tone = own ? tone : '';
+    });
   };
 
   async function api(method, path, body) {
@@ -34,6 +40,7 @@
 
   // 기기 창에서 일어난 오류를 사람이 읽을 문장으로 바꾼다.
   function ceremonyMessage(error, action) {
+    console.warn('[t08] passkey ceremony', error.name, error.message);
     if (error.name === 'NotAllowedError') {
       return action === 'register'
         ? '등록을 취소했거나 시간이 지났습니다. 서버에는 계정도 패스키도 저장되지 않았습니다.'
@@ -43,7 +50,7 @@
       return '이 기기(또는 비밀번호 관리자)에는 이미 이 계정의 패스키가 있습니다. 다른 기기나 다른 브라우저에서 등록해 보세요.';
     }
     if (error.name === 'SecurityError') return '이 주소에서는 패스키를 쓸 수 없습니다. https 주소인지 확인해 주세요.';
-    return error.message || '패스키 처리 중 문제가 생겼습니다.';
+    return `패스키 처리 중 문제가 생겼습니다. (${error.name || 'Error'}: ${error.message || '이유 없음'})`;
   }
 
   function setBusy(form, busy) {
@@ -82,6 +89,7 @@
           const remove = el('button', 'link-button', '지우기');
           remove.type = 'button';
           remove.addEventListener('click', async () => {
+          activeForm = null;
             try {
               await api('DELETE', `/api/private?id=${encodeURIComponent(note.id)}`);
               say('기록을 지웠습니다.');
@@ -120,6 +128,7 @@
         remove.type = 'button';
         remove.disabled = onlyOne;
         remove.addEventListener('click', async () => {
+          activeForm = null;
           if (!window.confirm(`'${key.name}' 패스키를 지울까요? 지운 뒤에는 이 열쇠로 들어올 수 없습니다.`)) return;
           try {
             const result = await api('DELETE', `/api/passkeys?id=${encodeURIComponent(key.id)}`);
@@ -168,6 +177,7 @@
   $('[data-register-form]').addEventListener('submit', async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
+    activeForm = form;
     const fields = new FormData(form);
     setBusy(form, true);
     say('기기에서 패스키를 만들어 주세요. 지문·얼굴·화면 잠금으로 확인합니다.');
@@ -188,6 +198,7 @@
   $('[data-login-form]').addEventListener('submit', async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
+    activeForm = form;
     const username = new FormData(form).get('username')?.trim();
     setBusy(form, true);
     say('기기에서 패스키를 골라 확인해 주세요.');
@@ -208,6 +219,7 @@
   $('[data-add-passkey-form]').addEventListener('submit', async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
+    activeForm = form;
     const name = new FormData(form).get('name') || defaultName();
     setBusy(form, true);
     say('새 기기나 다른 비밀번호 관리자에서 패스키를 만들어 주세요.');
@@ -229,6 +241,7 @@
   $('[data-note-form]').addEventListener('submit', async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
+    activeForm = form;
     const fields = new FormData(form);
     setBusy(form, true);
     try {
@@ -244,6 +257,7 @@
   });
 
   $('[data-logout]').addEventListener('click', async () => {
+    activeForm = null;
     try {
       await api('POST', '/api/logout', {});
     } finally {
