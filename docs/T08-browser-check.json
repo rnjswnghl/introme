@@ -1,7 +1,7 @@
 {
   "base": "http://localhost:4180",
-  "ranAt": "2026-10-29T08:38:20.984Z",
-  "username": "demo-jm15",
+  "ranAt": "2026-10-29T08:43:00.770Z",
+  "username": "demo-plm6",
   "results": [
     {
       "id": "B1",
@@ -88,7 +88,7 @@
       "path": "/api/register/options",
       "status": 200,
       "body": {
-        "username": "demo-jm15"
+        "username": "demo-plm6"
       }
     },
     {
@@ -96,7 +96,7 @@
       "path": "/api/register/options",
       "status": 200,
       "body": {
-        "username": "demo-jm15"
+        "username": "demo-plm6"
       }
     },
     {
@@ -105,7 +105,7 @@
       "status": 201,
       "body": {
         "response": {
-          "id": "a9PzCGZysna8jsvzqx2UjgR5-DzxUMTu0e767Im-Oi8",
+          "id": "cr7XQ0sa33UxzciE0uOGCTLzOZO_zBZ-7Uhwc_qfXlE",
           "필드": [
             "attestationObject",
             "clientDataJSON",
@@ -148,7 +148,7 @@
       "status": 201,
       "body": {
         "response": {
-          "id": "9g8kt1xsFpaYBqRrVE8vufWH5iZjkg9ds7vlqDiW3Uk",
+          "id": "5pzT_7aXmS1UUi-rcyCjt0qkjvjV0vLROLzZ-e5GLIw",
           "필드": [
             "attestationObject",
             "clientDataJSON",
@@ -169,7 +169,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/passkeys?id=a9PzCGZysna8jsvzqx2UjgR5-DzxUMTu0e767Im-Oi8",
+      "path": "/api/passkeys?id=cr7XQ0sa33UxzciE0uOGCTLzOZO_zBZ-7Uhwc_qfXlE",
       "status": 200,
       "body": null
     },
@@ -190,7 +190,7 @@
       "path": "/api/login/options",
       "status": 200,
       "body": {
-        "username": "demo-jm15"
+        "username": "demo-plm6"
       }
     },
     {
@@ -199,7 +199,7 @@
       "status": 200,
       "body": {
         "response": {
-          "id": "9g8kt1xsFpaYBqRrVE8vufWH5iZjkg9ds7vlqDiW3Uk",
+          "id": "5pzT_7aXmS1UUi-rcyCjt0qkjvjV0vLROLzZ-e5GLIw",
           "필드": [
             "authenticatorData",
             "clientDataJSON",
@@ -239,7 +239,7 @@
       "status": 401,
       "body": {
         "response": {
-          "id": "a9PzCGZysna8jsvzqx2UjgR5-DzxUMTu0e767Im-Oi8",
+          "id": "cr7XQ0sa33UxzciE0uOGCTLzOZO_zBZ-7Uhwc_qfXlE",
           "필드": [
             "authenticatorData",
             "clientDataJSON",
