@@ -7,7 +7,7 @@
 | 공개 결과물 | https://introme-t08.vercel.app (비공개 서랍: `#private`) |
 | 소스 | https://github.com/rnjswnghl/introme/tree/master |
 | 1번 공개 페이지 | https://intro.rnjswnghl.chatgpt.site/ 는 손대지 않고 보존 |
-| 배포 | Vercel `introme-t08`, Node 22, 함수 지역 iad1. DB는 Neon Postgres의 `t08_` 표 |
+| 배포 | Vercel `introme-t08`, Node 22, 함수 지역 sin1(싱가포르, DB와 같은 지역). DB는 Neon Postgres의 별도 데이터베이스 `introme_t08` |
 
 ## 공개와 비공개의 경계
 
@@ -32,7 +32,8 @@
 
 - **직접 구현 + 검증 라이브러리.** 이번 과제의 핵심은 "비밀번호 자리를 무엇이 대신하는지"를 직접 보는 것이다. Auth0·Clerk 같은 서비스를 쓰면 질문 보관·재사용 차단이 서비스 안에 숨어 기록으로 보여 줄 수 없다. 반대로 CBOR·서명 검증까지 손으로 짜면 실수할 곳이 너무 많다. 그래서 암호 검증만 라이브러리에 맡기고, 질문을 언제 만들고 언제 지우는지·세션을 어떻게 끊는지는 직접 썼다.
 - **SimpleWebAuthn.** 서버·브라우저가 같은 JSON 모양을 주고받고, 의존성이 적고, 공식 문서에 질문 보관을 서버가 해야 한다고 명시돼 있다.
-- **Postgres(Neon).** 질문을 한 번만 쓰게 하려면 "꺼내면서 지우기"가 한 동작이어야 한다. `delete … returning` 한 문장이 그걸 보장한다. 파일 저장소(Vercel Blob 등)는 이 원자성이 없고 읽기 캐시 때문에 로그아웃 직후 세션이 살아 보일 수 있어 뺐다. T07에서 이미 쓰던 Neon을 표 이름만 나눠 다시 쓴다.
+- **Postgres(Neon).** 질문을 한 번만 쓰게 하려면 "꺼내면서 지우기"가 한 동작이어야 한다. `delete … returning` 한 문장이 그걸 보장한다. 파일 저장소(Vercel Blob 등)는 이 원자성이 없고 읽기 캐시 때문에 로그아웃 직후 세션이 살아 보일 수 있어 뺐다. 처음에는 T07 데이터베이스에 `t08_` 표만 따로 만들 생각이었지만, 그러면 T08 코드가 T07 계정·세션 표까지 읽고 지울 수 있다. "남의 자료는 못 연다"를 보이는 과제에서 두 과제가 한 DB를 나누는 건 앞뒤가 안 맞아, 같은 Neon 프로젝트 안에 `introme_t08` 데이터베이스를 새로 만들어 연결했다.
+- **함수 지역 sin1.** Neon이 싱가포르(ap-southeast-1)에 있어 기본 지역(미국 동부)에 두면 요청마다 쿼리 여러 번이 태평양을 왕복한다. 함수를 DB와 같은 지역으로 옮겼다.
 - **Vercel.** 1번 페이지는 정적 호스팅(chatgpt.site)이라 서버를 붙일 수 없다. 같은 `dist/`를 그대로 내보내면서 `api/` 함수를 함께 올릴 수 있어 T07과 같은 곳을 골랐다.
 
 ### ③ 어디를 어떻게 고쳤나 — 네 흐름이 지나는 소스
@@ -63,7 +64,7 @@
 
 ### ④ 안 열리는 것을 확인한 기록
 
-전체 요청·응답: 로컬 `docs/T08-evidence-local.json`(31항목), 공개 주소 `docs/T08-evidence-public.json`, 화면 `docs/T08-browser-check.json` + `docs/screenshots/T08-*.png`. 세션 값은 앞 6자만 남기고 가렸다.
+전체 요청·응답: 로컬 `docs/T08-evidence-local.json`(31항목), 공개 주소 `docs/T08-evidence-public.md`(같은 31항목, 31/31 통과, `__Host-` 쿠키·Secure 확인), 화면 `docs/T08-browser-check.json` + `docs/screenshots/T08-*.png`. 세션 값은 앞 6자만 남기고 가렸다.
 
 | 확인 | 통과한 요청 | 거절된 요청 |
 | --- | --- | --- |
@@ -88,7 +89,8 @@
 3. **패스키를 지워도 그 패스키로 이미 만든 세션은 8시간 동안 살아 있다.** 잃어버린 기기의 패스키를 지우는 상황이라면 그 기기의 세션도 함께 끊어야 한다.
 4. **모든 패스키를 잃으면 돌아올 길이 없다.** 마지막 하나는 지울 수 없게 했지만, 그 하나가 든 기기를 잃으면 계정은 영원히 잠긴다. 복구 코드나 이메일 같은 두 번째 경로를 일부러 만들지 않았다(만들면 그게 비밀번호 자리를 다시 차지한다).
 5. **거절 이유 코드가 응답에 그대로 나간다.** 확인 기록을 남기려고 `reason`을 넣었는데, 공격자에게 "그 credential id가 서버에 있는지"를 알려 주는 단서가 된다. 실제 서비스라면 서버 로그로만 남긴다.
-6. **질문 보관 시간 5분 동안은 같은 질문을 다른 응답으로 노릴 수 있다.** 한 번 쓰면 지워지지만, 쓰기 전에는 살아 있다.
+6. **DB 계정 권한이 T07과 같다.** 데이터베이스는 나눴지만 연결에 쓰는 역할(`neondb_owner`)은 T07과 같다. 코드로는 T07 DB에 닿지 않지만, T08 연결 문자열이 새면 DB 이름만 바꿔 T07에도 들어갈 수 있다. `introme_t08`에만 권한이 있는 전용 역할로 바꿔야 한다.
+7. **질문 보관 시간 5분 동안은 같은 질문을 다른 응답으로 노릴 수 있다.** 한 번 쓰면 지워지지만, 쓰기 전에는 살아 있다.
 
 ## 마지막 패스키를 지우려고 하면
 
@@ -101,7 +103,7 @@ npm install
 npm run dev                                   # http://localhost:4180, 메모리 PGlite
 node scripts/t08-passkey-check.mjs            # API 31항목 → docs/T08-evidence-local.json
 node scripts/t08-browser-check.cjs            # Chrome 가상 인증기 12항목 + 캡처
-node scripts/t08-passkey-check.mjs https://introme-t08.vercel.app docs/T08-evidence-public.json
+node scripts/t08-passkey-check.mjs https://introme-t08.vercel.app /tmp/T08-evidence-public.json
 ```
 
 `scripts/soft-authenticator.mjs`는 P-256 키를 메모리에 만들어 WebAuthn 규격대로 응답·서명하는 검증용 인증기다. 실제 기기 패스키와 같은 서버 경로를 지나지만, 실제 기기의 저장 위치(Google 비밀번호 관리자 등)는 사람이 직접 등록해서 확인했다.
