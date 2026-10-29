@@ -166,12 +166,29 @@
     }
     try {
       const me = await api('GET', '/api/me');
+      // 패스키는 공식 주소 하나에만 묶인다. Vercel 배포별 주소 등으로 열었으면 공식 주소로 안내하고 폼을 잠근다.
+      if (me.origin && me.origin !== location.origin) {
+        showView('out');
+        lockForms(me.origin);
+        return;
+      }
       if (me.authenticated) await openDrawer();
       else showView('out');
     } catch (error) {
       showView('out');
       if (error.status === 503) say('서랍 저장소가 아직 연결되지 않았습니다. 공개 영역은 그대로 볼 수 있습니다.', 'error');
     }
+  }
+
+  function lockForms(origin) {
+    views.out.querySelectorAll('button, input').forEach((el) => {
+      el.disabled = true;
+    });
+    status.replaceChildren(
+      '지금 주소에서는 패스키를 쓸 수 없습니다. 패스키는 공식 주소에만 묶입니다 → ',
+      Object.assign(document.createElement('a'), { href: `${origin}/#private`, textContent: `${new URL(origin).host} 에서 열기` }),
+    );
+    status.dataset.tone = 'error';
   }
 
   $('[data-register-form]').addEventListener('submit', async (event) => {

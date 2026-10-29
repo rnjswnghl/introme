@@ -69,7 +69,9 @@ export function sessionCookie(token, maxAgeSeconds) {
 export function assertSameOriginWrite(req) {
   if (req.method === 'GET' || req.method === 'HEAD') return;
   if (req.headers.origin !== config.origin) {
-    throw new HttpError(403, 'origin_rejected', '허용되지 않은 출처의 요청입니다.');
+    throw new HttpError(403, 'origin_rejected', `이 주소에서는 패스키를 쓸 수 없습니다. ${config.origin} 에서 열어 주세요.`, {
+      expectedOrigin: config.origin,
+    });
   }
   const type = req.headers['content-type'] || '';
   if (req.method === 'POST' && !type.startsWith('application/json')) {

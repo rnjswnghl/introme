@@ -278,7 +278,8 @@ export async function logout(req, res) {
 export async function me(req, res) {
   // 로그인 여부만 알려 주는 확인용 주소. 비공개 자료는 담지 않는다.
   const session = await readSession(req);
-  send(res, 200, session ? { authenticated: true, username: session.username } : { authenticated: false });
+  // origin: 패스키가 묶인 공식 주소. 다른 주소(배포별 주소 등)로 열었는지 화면이 알 수 있게 한다.
+  send(res, 200, session ? { authenticated: true, username: session.username, origin: config.origin } : { authenticated: false, origin: config.origin });
 }
 
 // ── 패스키 목록·삭제 ────────────────────────────────────
