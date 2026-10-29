@@ -24,7 +24,7 @@
 - [공개 환경 검증](docs/T01-public-validation.json)
 
 ## T08 · 패스키 비공개 서랍
-1번 페이지에 04 비공개 탭을 이어 붙이고, 비밀번호 없이 패스키로만 열리게 했습니다. 브랜치 `t08-passkey`, 공개 주소 https://introme-t08.vercel.app (Vercel, Neon Postgres).
+1번 페이지에 04 비공개 탭을 이어 붙이고, 비밀번호 없이 패스키로만 열리게 했습니다. master 브랜치(작업 브랜치 `t08-passkey`에서 병합), 공개 주소 https://introme-t08.vercel.app (Vercel, Neon Postgres).
 - 실행: `npm install && npm run dev` → http://localhost:4180 (메모리 PGlite 자동 실행)
 - 설명서: [docs/T08-passkey.md](docs/T08-passkey.md) · 제출 준비: [docs/T08-submission.md](docs/T08-submission.md)
 - 검증: `node scripts/t08-passkey-check.mjs [주소]`, `node scripts/t08-browser-check.cjs [주소]`

@@ -5,7 +5,7 @@
 | 항목 | 값 |
 | --- | --- |
 | 공개 결과물 | https://introme-t08.vercel.app (비공개 서랍: `#private`) |
-| 소스 | https://github.com/rnjswnghl/introme/tree/t08-passkey |
+| 소스 | https://github.com/rnjswnghl/introme/tree/master |
 | 1번 공개 페이지 | https://intro.rnjswnghl.chatgpt.site/ 는 손대지 않고 보존 |
 | 배포 | Vercel `introme-t08`, Node 22, 함수 지역 iad1. DB는 Neon Postgres의 `t08_` 표 |
 

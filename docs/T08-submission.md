@@ -3,7 +3,7 @@
 ## 주소
 
 - 결과물: https://introme-t08.vercel.app
-- 소스: https://github.com/rnjswnghl/introme/tree/t08-passkey
+- 소스: https://github.com/rnjswnghl/introme/tree/master
 
 ## 짧은 확인 방법
 
