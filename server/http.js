@@ -88,6 +88,10 @@ export function wrap(handler, methods) {
       await handler(req, res);
     } catch (error) {
       if (error instanceof HttpError) {
+        // 거절 이유를 서버 로그에 남긴다(세션·자격 증명 값은 남기지 않는다).
+        if (error.code !== 'login_required') {
+          console.warn(`[t08] ${req.method} ${req.url.split('?')[0]} → ${error.status} ${error.code}${error.extra?.reason ? ` (${error.extra.reason})` : ''}`);
+        }
         send(res, error.status, { error: error.code, message: error.message, ...error.extra });
         return;
       }
