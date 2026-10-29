@@ -1,0 +1,253 @@
+{
+  "base": "http://localhost:4180",
+  "ranAt": "2026-10-29T08:14:30.128Z",
+  "username": "demo-owvl",
+  "results": [
+    {
+      "id": "B1",
+      "title": "로그인 전: 잠긴 서랍과 경계가 보이고 비공개 내용은 없다",
+      "pass": true
+    },
+    {
+      "id": "B2",
+      "title": "등록 취소 시 안내가 나오고 서랍은 열리지 않는다",
+      "pass": true,
+      "detail": "등록을 취소했거나 시간이 지났습니다. 서버에는 계정도 패스키도 저장되지 않았습니다."
+    },
+    {
+      "id": "B3",
+      "title": "등록 후 서랍이 열리고 비공개 기록 3건 이상",
+      "pass": true
+    },
+    {
+      "id": "B4",
+      "title": "같은 기기로 두 번째 패스키 등록은 막힌다",
+      "pass": true,
+      "detail": "이 기기(또는 비밀번호 관리자)에는 이미 이 계정의 패스키가 있습니다. 다른 기기나 다른 브라우저에서 등록해 보세요."
+    },
+    {
+      "id": "B5",
+      "title": "패스키 두 개가 이름·등록일과 함께 목록에 보인다",
+      "pass": true
+    },
+    {
+      "id": "B6",
+      "title": "하나를 지우면 하나 남고, 남은 하나는 지우기 버튼이 잠긴다",
+      "pass": true,
+      "detail": "마지막 하나라 지울 수 없음"
+    },
+    {
+      "id": "B7",
+      "title": "지우고 남은 패스키로 로그인 성공",
+      "pass": true
+    },
+    {
+      "id": "B8",
+      "title": "지운 패스키는 기기에 남아 있어도 들어가지 못한다",
+      "pass": true,
+      "detail": "패스키를 확인하지 못했습니다. 등록된 패스키로 다시 시도해 주세요."
+    },
+    {
+      "id": "B9",
+      "title": "1920·390·320에서 가로 넘침 없음",
+      "pass": true,
+      "detail": {
+        "320": 0,
+        "390": 0,
+        "1920": 0
+      }
+    },
+    {
+      "id": "B10",
+      "title": "방향키로 비공개 탭에 도달하고 패널이 열린다",
+      "pass": true
+    },
+    {
+      "id": "B11",
+      "title": "로그인 없이 받은 HTML에 사용자 이름표가 없다",
+      "pass": true
+    },
+    {
+      "id": "B12",
+      "title": "예상한 401(B8 거절) 외 콘솔 오류 없음",
+      "pass": true,
+      "detail": [
+        "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+      ]
+    }
+  ],
+  "network": [
+    {
+      "method": "GET",
+      "path": "/api/me",
+      "status": 200,
+      "body": null
+    },
+    {
+      "method": "POST",
+      "path": "/api/register/options",
+      "status": 200,
+      "body": {
+        "username": "demo-owvl"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/register/options",
+      "status": 200,
+      "body": {
+        "username": "demo-owvl"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/register/verify",
+      "status": 201,
+      "body": {
+        "response": {
+          "id": "6mbWYU_yBVpp8xtRqv-gjpHogzRktY7GG1Cg7RMtBjU",
+          "필드": [
+            "attestationObject",
+            "clientDataJSON",
+            "transports",
+            "publicKeyAlgorithm",
+            "publicKey",
+            "authenticatorData"
+          ]
+        },
+        "name": "노트북 Chrome (가상)"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/private",
+      "status": 200,
+      "body": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/passkeys",
+      "status": 200,
+      "body": null
+    },
+    {
+      "method": "POST",
+      "path": "/api/passkeys/options",
+      "status": 200,
+      "body": {}
+    },
+    {
+      "method": "POST",
+      "path": "/api/passkeys/options",
+      "status": 200,
+      "body": {}
+    },
+    {
+      "method": "POST",
+      "path": "/api/passkeys/verify",
+      "status": 201,
+      "body": {
+        "response": {
+          "id": "TdWKko8OuGxxebRDFy-ckixPhg7N48LNAA06ITj3xrg",
+          "필드": [
+            "attestationObject",
+            "clientDataJSON",
+            "transports",
+            "publicKeyAlgorithm",
+            "publicKey",
+            "authenticatorData"
+          ]
+        },
+        "name": "휴대폰 Chrome (가상)"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/passkeys",
+      "status": 200,
+      "body": null
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/passkeys?id=6mbWYU_yBVpp8xtRqv-gjpHogzRktY7GG1Cg7RMtBjU",
+      "status": 200,
+      "body": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/passkeys",
+      "status": 200,
+      "body": null
+    },
+    {
+      "method": "POST",
+      "path": "/api/logout",
+      "status": 200,
+      "body": {}
+    },
+    {
+      "method": "POST",
+      "path": "/api/login/options",
+      "status": 200,
+      "body": {
+        "username": "demo-owvl"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/login/verify",
+      "status": 200,
+      "body": {
+        "response": {
+          "id": "TdWKko8OuGxxebRDFy-ckixPhg7N48LNAA06ITj3xrg",
+          "필드": [
+            "authenticatorData",
+            "clientDataJSON",
+            "signature",
+            "userHandle"
+          ]
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/private",
+      "status": 200,
+      "body": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/passkeys",
+      "status": 200,
+      "body": null
+    },
+    {
+      "method": "POST",
+      "path": "/api/logout",
+      "status": 200,
+      "body": {}
+    },
+    {
+      "method": "POST",
+      "path": "/api/login/options",
+      "status": 200,
+      "body": {}
+    },
+    {
+      "method": "POST",
+      "path": "/api/login/verify",
+      "status": 401,
+      "body": {
+        "response": {
+          "id": "6mbWYU_yBVpp8xtRqv-gjpHogzRktY7GG1Cg7RMtBjU",
+          "필드": [
+            "authenticatorData",
+            "clientDataJSON",
+            "signature",
+            "userHandle"
+          ]
+        }
+      }
+    }
+  ]
+}

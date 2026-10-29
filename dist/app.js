@@ -16,6 +16,7 @@ function activateFolder(route, updateHash = true) {
   });
 
   if (updateHash) history.pushState(null, '', `#${activeTab.dataset.route}`);
+  document.dispatchEvent(new CustomEvent('folder-change', { detail: activeTab.dataset.route }));
   requestAnimationFrame(syncTopButton);
 }
 

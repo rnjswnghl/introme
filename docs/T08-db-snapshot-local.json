@@ -1,0 +1,134 @@
+{
+  "takenAt": "2026-10-29T08:13:47.123Z",
+  "설명": "t08_credentials에는 공개키(COSE, base64url)만 있고 개인키 열은 없다. 세션은 쿠키 원문이 아니라 sha256 해시만 저장한다.",
+  "t08_credentials_열": [
+    {
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "column_name": "user_id",
+      "data_type": "uuid"
+    },
+    {
+      "column_name": "public_key",
+      "data_type": "text"
+    },
+    {
+      "column_name": "counter",
+      "data_type": "bigint"
+    },
+    {
+      "column_name": "transports",
+      "data_type": "text"
+    },
+    {
+      "column_name": "device_type",
+      "data_type": "text"
+    },
+    {
+      "column_name": "backed_up",
+      "data_type": "boolean"
+    },
+    {
+      "column_name": "aaguid",
+      "data_type": "text"
+    },
+    {
+      "column_name": "name",
+      "data_type": "text"
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "column_name": "last_used_at",
+      "data_type": "timestamp with time zone"
+    }
+  ],
+  "t08_sessions_열": [
+    {
+      "column_name": "token_hash",
+      "data_type": "text"
+    },
+    {
+      "column_name": "user_id",
+      "data_type": "uuid"
+    },
+    {
+      "column_name": "credential_id",
+      "data_type": "text"
+    },
+    {
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "column_name": "expires_at",
+      "data_type": "timestamp with time zone"
+    }
+  ],
+  "credentials": [
+    {
+      "id": "KEb2JRVD2V… (43자)",
+      "username": "demo-no7x",
+      "name": "휴대폰 Chrome (가상)",
+      "public_key": "pAEBAycgBiFYIKWOgEXTe6__… (56자)",
+      "counter": "2",
+      "device_type": "singleDevice",
+      "backed_up": false,
+      "aaguid": "01020304-0506-0708-0102-030405060708",
+      "created_at": "2026-10-29T08:13:26.845Z"
+    },
+    {
+      "id": "tgC6CojlqL… (22자)",
+      "username": "t08a-9nncu",
+      "name": "A 휴대폰",
+      "public_key": "pQECAyYgASFYIH1aQTZQpNCs… (103자)",
+      "counter": "2",
+      "device_type": "singleDevice",
+      "backed_up": false,
+      "aaguid": "00000000-0000-0000-0000-000000000000",
+      "created_at": "2026-10-29T08:13:22.121Z"
+    },
+    {
+      "id": "AlvQgy9oQx… (22자)",
+      "username": "t08b-9nncu",
+      "name": "B 노트북",
+      "public_key": "pQECAyYgASFYIGMjwn6i3Z0q… (103자)",
+      "counter": "0",
+      "device_type": "singleDevice",
+      "backed_up": false,
+      "aaguid": "00000000-0000-0000-0000-000000000000",
+      "created_at": "2026-10-29T08:13:21.980Z"
+    }
+  ],
+  "sessions": [
+    {
+      "token_hash": "sxSVqJqp… (43자)",
+      "created_at": "2026-10-29T08:13:22.204Z",
+      "expires_at": "2026-10-29T16:13:22.208Z"
+    },
+    {
+      "token_hash": "HhwTlKsk… (43자)",
+      "created_at": "2026-10-29T08:13:21.980Z",
+      "expires_at": "2026-10-29T16:13:21.986Z"
+    },
+    {
+      "token_hash": "hccddlzh… (43자)",
+      "created_at": "2026-10-29T08:13:21.966Z",
+      "expires_at": "2026-10-29T16:13:21.971Z"
+    }
+  ],
+  "이름표_확인": [
+    {
+      "username": "t08c-9nncu",
+      "계정_있음": false
+    },
+    {
+      "username": "t08a-9nncu",
+      "계정_있음": true
+    }
+  ]
+}

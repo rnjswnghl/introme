@@ -1,0 +1,775 @@
+{
+  "base": "http://localhost:4180",
+  "ranAt": "2026-10-29T08:13:22.239Z",
+  "accounts": {
+    "a": "t08a-9nncu",
+    "b": "t08b-9nncu",
+    "c": "t08c-9nncu"
+  },
+  "total": 31,
+  "failed": 0,
+  "steps": [
+    {
+      "id": "1-1",
+      "criteria": [
+        "T08-C10",
+        "T08-C11"
+      ],
+      "title": "로그인 없이 첫 화면(공개 소개 페이지)이 열린다",
+      "request": {
+        "method": "GET",
+        "path": "/"
+      },
+      "response": {
+        "status": 200,
+        "포함": {
+          "공개소개": true,
+          "비공개경계": true
+        }
+      },
+      "expect": "200 + 공개 소개 내용 + 비공개 영역 경계",
+      "pass": true
+    },
+    {
+      "id": "1-2",
+      "criteria": [
+        "T08-C16",
+        "T08-C17"
+      ],
+      "title": "패스키 없이 비공개 자료를 서버에 직접 요청",
+      "request": {
+        "method": "GET",
+        "path": "/api/private",
+        "cookie": "없음"
+      },
+      "response": {
+        "status": 401,
+        "json": {
+          "error": "login_required",
+          "message": "패스키로 들어온 뒤에만 볼 수 있습니다."
+        },
+        "setCookie": null
+      },
+      "expect": "401",
+      "pass": true
+    },
+    {
+      "id": "2-1",
+      "criteria": [
+        "T08-C19",
+        "T08-C20"
+      ],
+      "title": "등록 질문은 요청마다 다르다",
+      "request": {
+        "method": "POST",
+        "path": "/api/register/options",
+        "body": {
+          "username": "t08a-9nncu"
+        },
+        "횟수": 2
+      },
+      "response": {
+        "status": [
+          200,
+          200
+        ],
+        "challenges": [
+          "UYIqZ2a0bo6iP7LI38zpm34oSivfjD_q5plKX4lsnLg",
+          "V9WCmJnIlcfH1sfrwZ2_j6V6he5lpY0FMZQFTvBRCM4"
+        ]
+      },
+      "expect": "두 값이 다르다",
+      "pass": true
+    },
+    {
+      "id": "2-2",
+      "criteria": [
+        "T08-C21",
+        "T08-C23",
+        "T08-C24"
+      ],
+      "title": "등록 완료 — 본문에는 공개키 관련 값만 실린다",
+      "request": {
+        "method": "POST",
+        "path": "/api/register/verify",
+        "body": {
+          "name": "A 노트북",
+          "response": {
+            "id": "Yy-HJ0qClhsVVZBOfbfClA",
+            "type": "public-key",
+            "response": {
+              "clientDataJSON": "eyJ0eXBlIjoid2Vi… (183자)",
+              "attestationObject": "o2NmbXRkbm9uZWdh… (238자)",
+              "transports": [
+                "internal"
+              ],
+              "publicKeyAlgorithm": "-7… (2자)",
+              "publicKey": "MFkwEwYHKoZIzj0C… (122자)",
+              "authenticatorData": "SZYN5YgOjGh0NBcP… (198자)"
+            }
+          },
+          "들어있는_필드": [
+            "clientDataJSON",
+            "attestationObject",
+            "transports",
+            "publicKeyAlgorithm",
+            "publicKey",
+            "authenticatorData"
+          ],
+          "개인키_포함": false
+        }
+      },
+      "response": {
+        "status": 201,
+        "json": {
+          "ok": true
+        },
+        "setCookie": "t08_session=aaUiD_…(가림); Path=/; HttpOnly; SameSite=Strict; Max-Age=28800"
+      },
+      "expect": "201 + 세션 쿠키(HttpOnly; SameSite=Strict)",
+      "pass": true
+    },
+    {
+      "id": "2-3",
+      "criteria": [
+        "T08-C19"
+      ],
+      "title": "같은 등록 응답을 한 번 더 보냄(질문 재사용)",
+      "request": {
+        "method": "POST",
+        "path": "/api/register/verify",
+        "body": "2-2와 같은 본문"
+      },
+      "response": {
+        "status": 401,
+        "json": {
+          "error": "challenge_invalid",
+          "message": "이미 사용했거나 만료된 질문입니다. 처음부터 다시 시도해 주세요.",
+          "reason": "challenge_invalid"
+        },
+        "setCookie": null
+      },
+      "expect": "401 challenge_invalid",
+      "pass": true
+    },
+    {
+      "id": "2-4",
+      "criteria": [
+        "T08-C25"
+      ],
+      "title": "등록을 중간에 취소하면 계정이 만들어지지 않는다",
+      "request": {
+        "순서": [
+          "POST /api/register/options",
+          "(기기 창 취소 — verify 없음)",
+          "같은 이름표로 다시 options",
+          "GET /api/me"
+        ]
+      },
+      "response": {
+        "status": [
+          200,
+          200,
+          401
+        ],
+        "두번째_options": "새 질문 발급(=이름표 미사용)"
+      },
+      "expect": "두 번째 options도 200(이미 쓰는 이름표 409가 아님), me 401",
+      "pass": true
+    },
+    {
+      "id": "2-5",
+      "criteria": [],
+      "title": "이미 있는 이름표로 새 계정 등록 시도",
+      "request": {
+        "method": "POST",
+        "path": "/api/register/options",
+        "body": {
+          "username": "t08a-9nncu"
+        }
+      },
+      "response": {
+        "status": 409,
+        "json": {
+          "error": "username_taken",
+          "message": "이미 쓰는 이름표입니다. 다른 이름표를 적어 주세요."
+        },
+        "setCookie": null
+      },
+      "expect": "409",
+      "pass": true
+    },
+    {
+      "id": "3-1",
+      "criteria": [
+        "T08-C27",
+        "T08-C29",
+        "T08-C30"
+      ],
+      "title": "패스키 로그인 성공(서명을 공개키로 확인)",
+      "request": {
+        "method": "POST",
+        "path": "/api/login/verify",
+        "options": {
+          "challenge": "AbKkoX1l7RgQi3Rnbe05WUfqY3DhlxMLpp8kUwfkiyQ",
+          "allowCredentials": 1
+        },
+        "body": {
+          "id": "Yy-HJ0qClhsVVZBOfbfClA",
+          "필드": [
+            "clientDataJSON",
+            "authenticatorData",
+            "signature",
+            "userHandle"
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "json": {
+          "ok": true
+        },
+        "setCookie": "t08_session=xbavzQ…(가림); Path=/; HttpOnly; SameSite=Strict; Max-Age=28800"
+      },
+      "expect": "200 + 새 세션",
+      "pass": true
+    },
+    {
+      "id": "3-2",
+      "criteria": [
+        "T08-C31"
+      ],
+      "title": "이미 쓴 질문(3-1의 응답 그대로)으로 다시 로그인",
+      "request": {
+        "method": "POST",
+        "path": "/api/login/verify",
+        "body": "3-1과 같은 본문"
+      },
+      "response": {
+        "status": 401,
+        "json": {
+          "error": "challenge_invalid",
+          "message": "이미 사용했거나 만료된 질문입니다. 처음부터 다시 시도해 주세요.",
+          "reason": "challenge_invalid"
+        },
+        "setCookie": null
+      },
+      "expect": "401 challenge_invalid",
+      "pass": true
+    },
+    {
+      "id": "3-3",
+      "criteria": [
+        "T08-C28"
+      ],
+      "title": "로그인 질문도 요청마다 다르다",
+      "request": {
+        "method": "POST",
+        "path": "/api/login/options",
+        "횟수": 2
+      },
+      "response": {
+        "challenges": [
+          "AbKkoX1l7RgQi3Rnbe05WUfqY3DhlxMLpp8kUwfkiyQ",
+          "tlBZkJ3mpsiPKOw1I2XlSObQ_vqW4odnipIFW8QxhnI"
+        ]
+      },
+      "expect": "두 값이 다르다",
+      "pass": true
+    },
+    {
+      "id": "3-4",
+      "criteria": [
+        "T08-C30"
+      ],
+      "title": "서명 끝 1비트를 바꾼 로그인(틀린 서명)",
+      "request": {
+        "method": "POST",
+        "path": "/api/login/verify",
+        "body": {
+          "id": "Yy-HJ0qClhsVVZBOfbfClA",
+          "signature": "마지막 바이트 변조"
+        }
+      },
+      "response": {
+        "status": 401,
+        "json": {
+          "error": "passkey_rejected",
+          "message": "패스키를 확인하지 못했습니다. 등록된 패스키로 다시 시도해 주세요.",
+          "reason": "signature_invalid"
+        },
+        "setCookie": null
+      },
+      "expect": "401 signature_invalid",
+      "pass": true
+    },
+    {
+      "id": "3-5",
+      "criteria": [
+        "T08-C31"
+      ],
+      "title": "실패한 질문을 올바른 서명으로 다시 써도 거절",
+      "request": {
+        "설명": "3-4에서 실패한 같은 질문에 올바른 서명"
+      },
+      "response": {
+        "status": 401,
+        "json": {
+          "error": "challenge_invalid",
+          "message": "이미 사용했거나 만료된 질문입니다. 처음부터 다시 시도해 주세요.",
+          "reason": "challenge_invalid"
+        },
+        "setCookie": null
+      },
+      "expect": "401 challenge_invalid",
+      "pass": true
+    },
+    {
+      "id": "3-6",
+      "criteria": [],
+      "title": "다른 출처에서 보낸 요청",
+      "request": {
+        "method": "POST",
+        "path": "/api/login/options",
+        "headers": {
+          "Origin": "https://evil.example"
+        }
+      },
+      "response": {
+        "status": 403,
+        "json": {
+          "error": "origin_rejected",
+          "message": "허용되지 않은 출처의 요청입니다."
+        },
+        "setCookie": null
+      },
+      "expect": "403",
+      "pass": true
+    },
+    {
+      "id": "3-7",
+      "criteria": [],
+      "title": "다른 사이트 주소로 서명된 응답(피싱 사이트 흉내)",
+      "request": {
+        "clientDataJSON_origin": "https://evil.example"
+      },
+      "response": {
+        "status": 401,
+        "json": {
+          "error": "passkey_rejected",
+          "message": "패스키를 확인하지 못했습니다. 등록된 패스키로 다시 시도해 주세요.",
+          "reason": "origin_mismatch"
+        },
+        "setCookie": null
+      },
+      "expect": "401 origin_mismatch",
+      "pass": true
+    },
+    {
+      "id": "3-8",
+      "criteria": [
+        "T08-C31"
+      ],
+      "title": "같은 로그인 응답을 동시에 두 번 보냄",
+      "request": {
+        "설명": "같은 본문 두 개를 Promise.all로 동시에 전송"
+      },
+      "response": {
+        "status": [
+          200,
+          401
+        ],
+        "reason": [
+          "ok",
+          "challenge_invalid"
+        ]
+      },
+      "expect": "하나만 200, 나머지 401",
+      "pass": true
+    },
+    {
+      "id": "4-1",
+      "criteria": [
+        "T08-C36",
+        "T08-C14"
+      ],
+      "title": "두 계정이 각자 다른 비공개 자료를 가진다",
+      "request": {
+        "method": "GET",
+        "path": "/api/private",
+        "계정": [
+          "A",
+          "B"
+        ]
+      },
+      "response": {
+        "status": [
+          200,
+          200
+        ],
+        "A": [
+          "[t08a-9nncu] 패스키 로그인(T08) 마무리 — 두 번째 패스키 등록과 삭제 뒤 로그인까지 기록하기.",
+          "[t08a-9nncu] 연습용 예시 · 가상회사 A 프론트엔드 / 가상회사 B 웹 플랫폼. 실제 지원처가 아닙니다.",
+          "[t08a-9nncu] 비밀번호 칸 없이 들어오는 흐름을 처음부터 끝까지 직접 만들어 본 날."
+        ],
+        "B": [
+          "[t08b-9nncu] 패스키 로그인(T08) 마무리 — 두 번째 패스키 등록과 삭제 뒤 로그인까지 기록하기.",
+          "[t08b-9nncu] 연습용 예시 · 가상회사 A 프론트엔드 / 가상회사 B 웹 플랫폼. 실제 지원처가 아닙니다.",
+          "[t08b-9nncu] 비밀번호 칸 없이 들어오는 흐름을 처음부터 끝까지 직접 만들어 본 날."
+        ]
+      },
+      "expect": "둘 다 200, 3건 이상, 내용이 다르다",
+      "pass": true
+    },
+    {
+      "id": "4-2",
+      "criteria": [
+        "T08-C37"
+      ],
+      "title": "A로 들어가 B의 자료를 id로 직접 요청",
+      "request": {
+        "method": "GET",
+        "path": "/api/private?id=f5b75848-5c32-4850-ad5c-e13d5c9e3bcd",
+        "세션": "A"
+      },
+      "response": {
+        "status": 404,
+        "json": {
+          "error": "not_found",
+          "message": "찾을 수 없는 자료입니다."
+        },
+        "setCookie": null
+      },
+      "expect": "404",
+      "pass": true
+    },
+    {
+      "id": "4-3",
+      "criteria": [
+        "T08-C38"
+      ],
+      "title": "B로 들어가 A의 자료를 id로 직접 요청",
+      "request": {
+        "method": "GET",
+        "path": "/api/private?id=fdd2fef7-fae0-4b3d-92b4-22257826aac3",
+        "세션": "B"
+      },
+      "response": {
+        "status": 404,
+        "json": {
+          "error": "not_found",
+          "message": "찾을 수 없는 자료입니다."
+        },
+        "setCookie": null
+      },
+      "expect": "404",
+      "pass": true
+    },
+    {
+      "id": "4-4",
+      "criteria": [
+        "T08-C39"
+      ],
+      "title": "A가 B의 자료 삭제 시도 — 거절 앞뒤 B의 자료 건수",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/private?id=f5b75848-5c32-4850-ad5c-e13d5c9e3bcd",
+        "세션": "A"
+      },
+      "response": {
+        "status": 404,
+        "json": {
+          "error": "not_found",
+          "message": "찾을 수 없는 자료입니다."
+        },
+        "B_건수": {
+          "전": 3,
+          "후": 3
+        }
+      },
+      "expect": "404, 건수 같음",
+      "pass": true
+    },
+    {
+      "id": "4-5",
+      "criteria": [
+        "T08-C38",
+        "T08-C39"
+      ],
+      "title": "B가 A의 자료 삭제 시도 — 반대 방향",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/private?id=fdd2fef7-fae0-4b3d-92b4-22257826aac3",
+        "세션": "B"
+      },
+      "response": {
+        "status": 404,
+        "A_건수": {
+          "전": 3,
+          "후": 3
+        }
+      },
+      "expect": "404, 건수 같음",
+      "pass": true
+    },
+    {
+      "id": "4-6",
+      "criteria": [
+        "T08-C40"
+      ],
+      "title": "주소·본문에 B의 계정 값을 넣어 보낸 요청",
+      "request": {
+        "get": "/api/private?userId=t08b-9nncu&owner=t08b-9nncu",
+        "post": {
+          "path": "/api/private",
+          "body": {
+            "owner": "t08b-9nncu",
+            "userId": "t08b-9nncu",
+            "title": "주인 바꿔치기 시도"
+          }
+        },
+        "세션": "A"
+      },
+      "response": {
+        "get": {
+          "status": 200,
+          "owner": "t08a-9nncu",
+          "건수": 3
+        },
+        "post": {
+          "status": 201,
+          "owner": "t08a-9nncu"
+        },
+        "B_자료에_생겼나": false
+      },
+      "expect": "GET은 A 자료만, POST는 A 자료로 저장, B에는 안 생김",
+      "pass": true
+    },
+    {
+      "id": "4-7",
+      "criteria": [
+        "T08-C50"
+      ],
+      "title": "A의 이름표로 시작해 B의 패스키로 서명(남의 패스키)",
+      "request": {
+        "이름표": "t08a-9nncu",
+        "서명한_패스키": "B 노트북"
+      },
+      "response": {
+        "status": 401,
+        "json": {
+          "error": "passkey_rejected",
+          "message": "패스키를 확인하지 못했습니다. 등록된 패스키로 다시 시도해 주세요.",
+          "reason": "credential_owner_mismatch"
+        },
+        "setCookie": null
+      },
+      "expect": "401 credential_owner_mismatch",
+      "pass": true
+    },
+    {
+      "id": "5-1",
+      "criteria": [
+        "T08-C32",
+        "T08-C33",
+        "T08-C34"
+      ],
+      "title": "로그아웃 뒤 같은 세션 값으로 다시 요청",
+      "request": {
+        "세션": "쿠키(HttpOnly) 값을 서버 sha256 해시와 대조",
+        "쿠키": "xbavzQ…(가림)",
+        "순서": [
+          "GET /api/private",
+          "POST /api/logout",
+          "같은 쿠키로 GET /api/private"
+        ]
+      },
+      "response": {
+        "status": [
+          200,
+          200,
+          401
+        ],
+        "logoutSetCookie": "t08_session=; Path=/; HttpOnly; SameSite=Strict; Max-Age=0",
+        "지운_세션": 1
+      },
+      "expect": "200 → 200 → 401",
+      "pass": true
+    },
+    {
+      "id": "6-1",
+      "criteria": [
+        "T08-C42"
+      ],
+      "title": "같은 인증기로 두 번째 패스키 — 이미 있는 패스키는 제외 목록으로 막힌다",
+      "request": {
+        "method": "POST",
+        "path": "/api/passkeys/options",
+        "excludeCredentials": 1
+      },
+      "response": {
+        "인증기_결과": "InvalidStateError"
+      },
+      "expect": "InvalidStateError",
+      "pass": true
+    },
+    {
+      "id": "6-2",
+      "criteria": [
+        "T08-C42",
+        "T08-C43"
+      ],
+      "title": "다른 인증기로 두 번째 패스키 등록 후 목록",
+      "request": {
+        "method": "POST",
+        "path": "/api/passkeys/verify",
+        "body": {
+          "name": "A 휴대폰"
+        }
+      },
+      "response": {
+        "status": [
+          201,
+          200
+        ],
+        "passkeys": [
+          {
+            "name": "A 노트북",
+            "createdAt": "2026-10-29T08:13:21.859Z",
+            "storedIn": "이 기기 안 (보안키·기기 전용, 종류 미확인)"
+          },
+          {
+            "name": "A 휴대폰",
+            "createdAt": "2026-10-29T08:13:22.121Z",
+            "storedIn": "이 기기 안 (보안키·기기 전용, 종류 미확인)"
+          }
+        ]
+      },
+      "expect": "201, 목록 2개(이름·등록일)",
+      "pass": true
+    },
+    {
+      "id": "6-3",
+      "criteria": [],
+      "title": "이미 등록된 패스키 응답을 새 질문에 붙여 다시 등록",
+      "request": {
+        "설명": "같은 credential id, 새 challenge"
+      },
+      "response": {
+        "status": 409,
+        "json": {
+          "error": "credential_exists",
+          "message": "이미 등록된 패스키입니다."
+        },
+        "setCookie": null
+      },
+      "expect": "400 또는 409",
+      "pass": true
+    },
+    {
+      "id": "6-4",
+      "criteria": [
+        "T08-C44"
+      ],
+      "title": "A 노트북 패스키를 지운 뒤 남은 A 휴대폰으로 로그인",
+      "request": {
+        "삭제": "DELETE /api/passkeys?id=Yy-HJ0qC…",
+        "로그인": "A 휴대폰"
+      },
+      "response": {
+        "status": [
+          200,
+          200
+        ],
+        "남은_패스키": 1
+      },
+      "expect": "200, 200",
+      "pass": true
+    },
+    {
+      "id": "6-5",
+      "criteria": [
+        "T08-C45"
+      ],
+      "title": "지운 패스키(인증기에는 아직 남아 있음)로 로그인",
+      "request": {
+        "설명": "서버에서만 지웠고 인증기에는 개인키가 남은 상태로 서명"
+      },
+      "response": {
+        "이름표_지정": 401,
+        "이름표_없이": {
+          "status": 401,
+          "json": {
+            "error": "passkey_rejected",
+            "message": "패스키를 확인하지 못했습니다. 등록된 패스키로 다시 시도해 주세요.",
+            "reason": "credential_unknown"
+          }
+        }
+      },
+      "expect": "401 credential_unknown",
+      "pass": true
+    },
+    {
+      "id": "6-6",
+      "criteria": [
+        "T08-C46"
+      ],
+      "title": "마지막 남은 패스키 삭제 시도",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/passkeys?id=(마지막 패스키)"
+      },
+      "response": {
+        "status": 409,
+        "json": {
+          "error": "last_passkey",
+          "message": "마지막 남은 패스키는 지울 수 없습니다. 다른 패스키를 먼저 등록해 주세요."
+        },
+        "남은_패스키": 1
+      },
+      "expect": "409 last_passkey, 1개 유지",
+      "pass": true
+    },
+    {
+      "id": "6-7",
+      "criteria": [],
+      "title": "A가 B의 패스키 삭제 시도",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/passkeys?id=(B의 패스키)",
+        "세션": "A"
+      },
+      "response": {
+        "status": 404,
+        "json": {
+          "error": "not_found",
+          "message": "이 계정의 패스키가 아닙니다."
+        },
+        "setCookie": null
+      },
+      "expect": "404",
+      "pass": true
+    },
+    {
+      "id": "7-1",
+      "criteria": [
+        "T08-C18"
+      ],
+      "title": "로그인 없이 받은 페이지·스크립트 소스에 비공개 내용이 없다",
+      "request": {
+        "확인한_파일": [
+          "/",
+          "/index.html",
+          "/private.js",
+          "/app.js"
+        ],
+        "찾은_문자열": "두 계정의 비공개 자료 본문 6건 + 이름표 2개"
+      },
+      "response": {
+        "발견": []
+      },
+      "expect": "0건",
+      "pass": true
+    }
+  ]
+}
